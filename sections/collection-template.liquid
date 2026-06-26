@@ -1,0 +1,155 @@
+<div class="collection-page">
+  <!-- Collection Hero -->
+  <div class="collection-hero" {% if collection.image %}style="background-image: url('{{ collection.image | image_url: width: 1600 }}');"{% endif %}>
+    <div class="collection-hero__overlay"></div>
+    <div class="container">
+      <div class="collection-hero__content">
+        <nav class="breadcrumb breadcrumb--light">
+          <a href="/">Home</a>
+          <span>/</span>
+          <span>{{ collection.title }}</span>
+        </nav>
+        <h1 class="collection-hero__title">{{ collection.title }}</h1>
+        {% if collection.description != blank %}
+          <p class="collection-hero__desc">{{ collection.description }}</p>
+        {% endif %}
+        <p class="collection-hero__count">{{ collection.products_count }} Products</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container section-padding">
+    <!-- Filter & Sort Bar -->
+    <div class="collection-toolbar">
+      <div class="collection-toolbar__left">
+        <button class="collection-filter-toggle" id="filter-toggle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+          Filters
+        </button>
+        <span class="collection-toolbar__count">{{ collection.products_count }} items</span>
+      </div>
+
+      <div class="collection-toolbar__right">
+        <div class="collection-view-toggle">
+          <button class="view-btn view-btn--grid view-btn--active" data-view="grid" aria-label="Grid view">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          </button>
+          <button class="view-btn view-btn--list" data-view="list" aria-label="List view">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          </button>
+        </div>
+        <div class="collection-sort">
+          <label for="sort-by" class="sr-only">Sort by</label>
+          <select id="sort-by" name="sort_by" onchange="window.location = '{{ collection.url }}?sort_by=' + this.value">
+            <option value="manual" {% if collection.sort_by == 'manual' %}selected{% endif %}>Featured</option>
+            <option value="best-selling" {% if collection.sort_by == 'best-selling' %}selected{% endif %}>Best Selling</option>
+            <option value="price-ascending" {% if collection.sort_by == 'price-ascending' %}selected{% endif %}>Price: Low to High</option>
+            <option value="price-descending" {% if collection.sort_by == 'price-descending' %}selected{% endif %}>Price: High to Low</option>
+            <option value="created-descending" {% if collection.sort_by == 'created-descending' %}selected{% endif %}>Newest</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="collection-layout" id="collection-layout">
+      <!-- Sidebar Filters -->
+      <aside class="collection-sidebar" id="collection-sidebar">
+        <div class="collection-sidebar__inner">
+          <div class="sidebar-section">
+            <h3 class="sidebar-section__title">Price Range</h3>
+            <div class="price-filter">
+              <div class="price-filter__inputs">
+                <input type="number" placeholder="₹ Min" class="price-input" id="price-min">
+                <span>to</span>
+                <input type="number" placeholder="₹ Max" class="price-input" id="price-max">
+              </div>
+              <button class="btn btn--outline btn--sm" onclick="applyPriceFilter()">Apply</button>
+            </div>
+          </div>
+
+          {% for filter in collection.filters %}
+            <div class="sidebar-section">
+              <h3 class="sidebar-section__title">{{ filter.label }}</h3>
+              <div class="sidebar-section__body">
+                {% if filter.type == 'boolean' or filter.type == 'list' %}
+                  {% for value in filter.values %}
+                    <label class="filter-checkbox">
+                      <input
+                        type="checkbox"
+                        name="{{ value.param_name }}"
+                        value="{{ value.value }}"
+                        {% if value.active %}checked{% endif %}
+                        onchange="this.form.submit()"
+                      >
+                      <span class="filter-checkbox__label">{{ value.label }} ({{ value.count }})</span>
+                    </label>
+                  {% endfor %}
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </aside>
+
+      <!-- Product Grid -->
+      <div class="collection-products">
+        {% if collection.products.size == 0 %}
+          <div class="collection-empty">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <h2>No products found</h2>
+            <p>Try adjusting your filters or browse all our products.</p>
+            <a href="/collections/all" class="btn btn--primary">Shop All Honey</a>
+          </div>
+        {% else %}
+          <div class="products-grid products-grid--3" id="products-grid">
+            {% for product in collection.products %}
+              {% render 'product-card', product: product %}
+            {% endfor %}
+          </div>
+
+          <!-- Pagination -->
+          {% if paginate.pages > 1 %}
+            <div class="pagination">
+              {% if paginate.previous %}
+                <a href="{{ paginate.previous.url }}" class="pagination__btn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                  Prev
+                </a>
+              {% endif %}
+              {% for part in paginate.parts %}
+                {% if part.is_link %}
+                  <a href="{{ part.url }}" class="pagination__page {% if part.is_current %}pagination__page--active{% endif %}">{{ part.title }}</a>
+                {% else %}
+                  <span class="pagination__ellipsis">{{ part.title }}</span>
+                {% endif %}
+              {% endfor %}
+              {% if paginate.next %}
+                <a href="{{ paginate.next.url }}" class="pagination__btn">
+                  Next
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection Template",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 12,
+      "max": 48,
+      "step": 4,
+      "label": "Products per Page",
+      "default": 24
+    }
+  ]
+}
+{% endschema %}

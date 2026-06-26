@@ -1,0 +1,199 @@
+<section class="testimonials section-padding">
+  <div class="container">
+    <div class="section-header section-header--center">
+      {% if section.settings.eyebrow != blank %}
+        <p class="section-eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+    </div>
+
+    <div class="testimonials__rating-summary">
+      <div class="testimonials__stars">
+        {% for i in (1..5) %}
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#F5C842"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        {% endfor %}
+      </div>
+      <p class="testimonials__summary-text">{{ section.settings.rating_text | default: '4.9/5 from 2,400+ happy customers' }}</p>
+    </div>
+
+    <div class="testimonials__slider" id="testimonials-slider">
+      <div class="testimonials__track">
+        {% for block in section.blocks %}
+          <div class="testimonial-card" {{ block.shopify_attributes }}>
+            <div class="testimonial-card__stars">
+              {% assign rating = block.settings.rating | default: 5 %}
+              {% for i in (1..5) %}
+                <svg width="16" height="16" viewBox="0 0 24 24" {% if i <= rating %}fill="#F5C842"{% else %}fill="#DDD"{% endif %}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              {% endfor %}
+            </div>
+            <blockquote class="testimonial-card__quote">
+              <svg class="testimonial-card__quote-icon" width="32" height="32" viewBox="0 0 24 24" fill="currentColor" opacity="0.2"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+              {{ block.settings.review }}
+            </blockquote>
+            <div class="testimonial-card__author">
+              {% if block.settings.avatar %}
+                <img src="{{ block.settings.avatar | image_url: width: 60 }}" alt="{{ block.settings.name }}" class="testimonial-card__avatar" loading="lazy">
+              {% else %}
+                <div class="testimonial-card__avatar-placeholder">
+                  {{ block.settings.name | split: '' | first }}
+                </div>
+              {% endif %}
+              <div class="testimonial-card__author-info">
+                <strong class="testimonial-card__name">{{ block.settings.name }}</strong>
+                <span class="testimonial-card__location">{{ block.settings.location }}</span>
+              </div>
+              {% if block.settings.verified %}
+                <div class="testimonial-card__verified">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#4CAF50"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  <span>Verified</span>
+                </div>
+              {% endif %}
+            </div>
+            {% if block.settings.product_name != blank %}
+              <p class="testimonial-card__product">Purchased: <strong>{{ block.settings.product_name }}</strong></p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+
+      <button class="testimonials__nav testimonials__nav--prev" aria-label="Previous">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button class="testimonials__nav testimonials__nav--next" aria-label="Next">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+
+    <div class="testimonials__dots" id="testimonials-dots"></div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "max_blocks": 12,
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "label": "Rating",
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "review",
+          "label": "Review Text",
+          "default": "I have been eating honey all my life but this is genuinely different. You can taste the wildflowers. My health has improved since I switched to Himachal Valley honey."
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Customer Name",
+          "default": "Priya Sharma"
+        },
+        {
+          "type": "text",
+          "id": "location",
+          "label": "Location",
+          "default": "Mumbai, Maharashtra"
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Avatar Photo"
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "Verified Purchase",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "product_name",
+          "label": "Product Purchased",
+          "default": "Wild Multifloral Honey 500g"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Customer Love"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "What India Says About Us"
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating Summary Text",
+      "default": "4.9/5 from 2,400+ happy customers across India"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review": "I switched from supermarket honey to Himachal Valley 6 months ago and I will never go back. The taste difference is incredible. You can actually smell the Himalayan flowers in each spoonful.",
+            "name": "Arjun Mehta",
+            "location": "Delhi",
+            "verified": true,
+            "product_name": "Kashmiri Acacia Honey 500g"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review": "Ordered for my diabetic mother. The doctor said raw honey is better and this one is exactly what she needed. Packing is beautiful, delivery was in 2 days. Highly recommend!",
+            "name": "Sunita Patel",
+            "location": "Ahmedabad, Gujarat",
+            "verified": true,
+            "product_name": "Raw Organic Honey 250g"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review": "The gift hamper I ordered for Diwali was a massive hit with my family. Everyone was asking where I got such premium quality honey. The packaging is truly luxury level.",
+            "name": "Rohan Nair",
+            "location": "Bengaluru, Karnataka",
+            "verified": true,
+            "product_name": "Diwali Honey Gift Set"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review": "As a nutritionist, I always recommend raw honey to clients. Himachal Valley is the only brand I trust completely. Lab certified, raw, and the taste is exceptional.",
+            "name": "Dr. Kavya Reddy",
+            "location": "Hyderabad, Telangana",
+            "verified": true,
+            "product_name": "Wild Forest Honey 1kg"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

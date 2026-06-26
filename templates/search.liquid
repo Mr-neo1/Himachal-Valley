@@ -1,0 +1,43 @@
+<div class="search-page section-padding">
+  <div class="container">
+    <div class="search-page__header">
+      <h1 class="page-title">
+        {% if search.performed %}
+          {% if search.results_count == 0 %}
+            No results for "{{ search.terms }}"
+          {% else %}
+            {{ search.results_count }} results for "{{ search.terms }}"
+          {% endif %}
+        {% else %}
+          Search
+        {% endif %}
+      </h1>
+      <form action="/search" method="get" class="search-page__form">
+        <div style="position:relative; display:flex; align-items:center; gap:12px; border:2px solid var(--color-border); border-radius:var(--radius-full); padding:4px 4px 4px 20px; background:white; max-width:600px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-light)" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="Search honey, gifts, recipes..." style="flex:1;border:none;outline:none;font-size:1rem;background:transparent;color:var(--color-text);">
+          <button type="submit" class="btn btn--primary">Search</button>
+        </div>
+      </form>
+    </div>
+
+    {% if search.performed %}
+      {% if search.results_count == 0 %}
+        <div style="text-align:center; padding:64px 24px;">
+          <p style="font-size:1.1rem; color:var(--color-text-light); margin-bottom:24px;">
+            Try searching for "raw honey", "gift set", or "kashmiri honey"
+          </p>
+          <a href="/collections/all" class="btn btn--primary">Browse All Products</a>
+        </div>
+      {% else %}
+        <div class="products-grid products-grid--4" style="margin-top:40px;">
+          {% for result in search.results %}
+            {% if result.object_type == 'product' %}
+              {% render 'product-card', product: result %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+</div>

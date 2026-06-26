@@ -1,0 +1,207 @@
+<section class="why-choose section-padding" style="background: {{ section.settings.background_color }};">
+  <div class="container">
+    <div class="section-header section-header--center">
+      {% if section.settings.eyebrow != blank %}
+        <p class="section-eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+      {% if section.settings.subtitle != blank %}
+        <p class="section-subtitle">{{ section.settings.subtitle }}</p>
+      {% endif %}
+    </div>
+
+    <div class="why-choose__grid">
+      {% for block in section.blocks %}
+        <div class="why-choose__item" {{ block.shopify_attributes }}>
+          <div class="why-choose__icon-wrap">
+            {% if block.settings.icon_image %}
+              <img src="{{ block.settings.icon_image | image_url: width: 80 }}" alt="{{ block.settings.title }}" width="60" height="60">
+            {% else %}
+              <div class="why-choose__icon">
+                {% case block.settings.icon %}
+                  {% when 'bee' %}
+                    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" width="60" height="60">
+                      <ellipse cx="30" cy="35" rx="15" ry="18" fill="#F5C842"/>
+                      <ellipse cx="30" cy="35" rx="15" ry="18" fill="none" stroke="#C8860A" stroke-width="1.5"/>
+                      <rect x="20" y="28" width="20" height="4" rx="2" fill="#2C1A0E" opacity="0.3"/>
+                      <rect x="20" y="35" width="20" height="4" rx="2" fill="#2C1A0E" opacity="0.3"/>
+                      <circle cx="30" cy="20" r="8" fill="#F5C842"/>
+                      <ellipse cx="20" cy="25" rx="10" ry="5" fill="white" opacity="0.7" transform="rotate(-30 20 25)"/>
+                      <ellipse cx="40" cy="25" rx="10" ry="5" fill="white" opacity="0.7" transform="rotate(30 40 25)"/>
+                    </svg>
+                  {% when 'mountain' %}
+                    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" width="60" height="60">
+                      <polygon points="30,8 5,52 55,52" fill="#6B8E5E" opacity="0.8"/>
+                      <polygon points="45,18 25,52 55,52" fill="#4A6741"/>
+                      <polygon points="30,8 24,20 36,20" fill="white" opacity="0.9"/>
+                    </svg>
+                  {% when 'lab' %}
+                    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" width="60" height="60">
+                      <path d="M22 10 L22 35 L10 52 L50 52 L38 35 L38 10 Z" fill="#E8F4F8" stroke="#C8860A" stroke-width="1.5"/>
+                      <rect x="18" y="10" width="24" height="6" rx="2" fill="#C8860A"/>
+                      <circle cx="25" cy="42" r="4" fill="#F5C842"/>
+                      <circle cx="35" cy="45" r="3" fill="#C8860A" opacity="0.7"/>
+                    </svg>
+                  {% when 'heart' %}
+                    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" width="60" height="60">
+                      <path d="M30 48 L10 28 C6 24 6 16 12 12 C18 8 24 12 30 18 C36 12 42 8 48 12 C54 16 54 24 50 28 Z" fill="#C8860A" opacity="0.9"/>
+                      <path d="M20 22 C20 22 22 20 25 22" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+                    </svg>
+                  {% when 'truck' %}
+                    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" width="60" height="60">
+                      <rect x="5" y="18" width="35" height="25" rx="3" fill="#C8860A" opacity="0.9"/>
+                      <path d="M40 25 L55 30 L55 43 L40 43 Z" fill="#F5C842"/>
+                      <circle cx="15" cy="46" r="7" fill="#2C1A0E"/>
+                      <circle cx="15" cy="46" r="3" fill="white"/>
+                      <circle cx="45" cy="46" r="7" fill="#2C1A0E"/>
+                      <circle cx="45" cy="46" r="3" fill="white"/>
+                    </svg>
+                  {% when 'leaf' %}
+                    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" width="60" height="60">
+                      <path d="M30 8 C50 8 55 28 45 42 C35 56 10 55 8 38 C6 20 18 8 30 8 Z" fill="#6B8E5E" opacity="0.9"/>
+                      <path d="M30 8 L20 52" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+                      <path d="M30 20 L15 32" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+                      <path d="M30 30 L14 38" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+                    </svg>
+                  {% else %}
+                    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" width="60" height="60">
+                      <circle cx="30" cy="30" r="22" fill="#F5C842" opacity="0.8"/>
+                      <path d="M20 30 L27 37 L40 23" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                {% endcase %}
+              </div>
+            {% endif %}
+          </div>
+          <h3 class="why-choose__title">{{ block.settings.title }}</h3>
+          <p class="why-choose__text">{{ block.settings.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Why Choose Us",
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {"value": "bee", "label": "Bee"},
+            {"value": "mountain", "label": "Mountain"},
+            {"value": "lab", "label": "Lab / Science"},
+            {"value": "heart", "label": "Heart"},
+            {"value": "truck", "label": "Truck"},
+            {"value": "leaf", "label": "Leaf"}
+          ],
+          "default": "bee"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Custom Icon Image (overrides above)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Wild Himalayan Bees"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Our bees forage in pristine alpine meadows at altitudes of 1500–3000m, collecting nectar from over 200 varieties of medicinal wildflowers."
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The Himachal Difference"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Why Our Honey is Different"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Not all honey is created equal. Here's what sets Himachal Valley apart."
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFF3E0"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Choose Us",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "mountain",
+            "title": "Himalayan Origin",
+            "description": "Sourced from pristine alpine forests of Himachal Pradesh at elevations above 1500 metres, where pollution is zero and biodiversity is unmatched."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "bee",
+            "title": "Wild Bee Colonies",
+            "description": "Our bees are never fed sugar syrups. They forage freely on 200+ varieties of Himalayan wildflowers, medicinal herbs, and forest flora."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "lab",
+            "title": "Lab Tested & FSSAI Certified",
+            "description": "Every batch is independently tested for purity, HMF levels, moisture, and adulteration. Certificates available on request."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "leaf",
+            "title": "Cold Extracted",
+            "description": "We never heat our honey. Cold extraction preserves all live enzymes, antioxidants, pollen, and the natural goodness of raw honey."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "heart",
+            "title": "Farmer First",
+            "description": "We pay Himachali beekeepers 40% above market rate, ensuring sustainable livelihoods and ethical harvesting practices."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "truck",
+            "title": "Fast Pan-India Delivery",
+            "description": "Dispatched within 24 hours, delivered across all 28 states. Temperature-controlled packaging ensures freshness."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

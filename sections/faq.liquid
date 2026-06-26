@@ -1,0 +1,138 @@
+<section class="faq section-padding">
+  <div class="container container--narrow">
+    <div class="section-header section-header--center">
+      <p class="section-eyebrow">Got Questions?</p>
+      <h1 class="section-title">Frequently Asked Questions</h1>
+      <p class="section-subtitle">Everything you need to know about our pure mountain honey, shipping, and more.</p>
+    </div>
+    
+    <div class="faq__list">
+      {% for block in section.blocks %}
+        <div class="faq__item" {{ block.shopify_attributes }}>
+          <button class="faq__question">
+            <span>{{ block.settings.question }}</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq__answer rte">
+            <div class="faq__answer-inner">
+              {{ block.settings.answer }}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+.faq__list { max-width: 800px; margin: 0 auto; }
+.faq__item { border-bottom: 1px solid var(--color-border); }
+.faq__item:first-child { border-top: 1px solid var(--color-border); }
+.faq__question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0;
+  background: transparent;
+  border: none;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-dark);
+  text-align: left;
+  cursor: pointer;
+}
+.faq__question svg {
+  transition: transform var(--transition);
+  color: var(--color-primary);
+}
+.faq__item.active .faq__question svg { transform: rotate(180deg); }
+.faq__answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition);
+}
+.faq__answer-inner {
+  padding-bottom: 24px;
+  color: var(--color-text-light);
+  line-height: 1.6;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const faqQuestions = document.querySelectorAll('.faq__question');
+  faqQuestions.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq__item');
+      const answer = item.querySelector('.faq__answer');
+      const isActive = item.classList.contains('active');
+      
+      document.querySelectorAll('.faq__item').forEach(el => {
+        el.classList.remove('active');
+        el.querySelector('.faq__answer').style.maxHeight = null;
+      });
+      
+      if (!isActive) {
+        item.classList.add('active');
+        answer.style.maxHeight = answer.querySelector('.faq__answer-inner').scrollHeight + 'px';
+      }
+    });
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Is your honey 100% pure and raw?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Yes, absolutely! Our honey is completely raw, unfiltered, and unpasteurized. It is extracted directly from the comb and bottled without any heating to ensure all natural enzymes and nutrients are preserved.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Section",
+      "blocks": [
+        {
+          "type": "question",
+          "settings": {
+            "question": "Is your honey 100% pure and raw?",
+            "answer": "<p>Yes, absolutely! Our honey is completely raw, unfiltered, and unpasteurized. It is extracted directly from the comb and bottled without any heating to ensure all natural enzymes and nutrients are preserved.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "Where does the honey come from?",
+            "answer": "<p>Our honey is sourced exclusively from the pristine valleys and dense forests of Himachal Pradesh, specifically from the Kangra and Kullu regions.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "Why does my honey crystallize?",
+            "answer": "<p>Crystallization is a natural process and a sign of pure, raw honey. If your honey crystallizes, simply place the jar in warm water (not boiling) and gently stir until it returns to a liquid state.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,15 @@
+{
+  "current": {
+    "color_primary": "#C8860A",
+    "color_secondary": "#8B4513",
+    "color_accent": "#F5C842",
+    "color_background": "#FFF8F0",
+    "color_dark": "#2C1A0E",
+    "color_text": "#4A3728",
+    "show_announcement": true,
+    "announcement_text": "🍯 Free Shipping on Orders Above ₹999 | 100% Pure & Raw Himalayan Honey",
+    "announcement_bg": "#2C1A0E",
+    "announcement_color": "#F5C842",
+    "cart_type": "drawer"
+  }
+}

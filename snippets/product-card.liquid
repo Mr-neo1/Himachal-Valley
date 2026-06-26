@@ -1,0 +1,115 @@
+{% comment %}
+  Renders a product card.
+  Usage: {% render 'product-card', product: product %}
+{% endcomment %}
+
+<div class="product-card" data-product-id="{{ product.id }}">
+  <div class="product-card__media">
+    <a href="{{ product.url }}" class="product-card__img-link" aria-label="{{ product.title }}">
+      {% if product.featured_image %}
+        <img
+          src="{{ product.featured_image | image_url: width: 600 }}"
+          srcset="{{ product.featured_image | image_url: width: 400 }} 400w, {{ product.featured_image | image_url: width: 600 }} 600w"
+          sizes="(max-width: 640px) 50vw, 25vw"
+          alt="{{ product.featured_image.alt | escape | default: product.title }}"
+          class="product-card__img product-card__img--primary"
+          loading="lazy"
+          width="600"
+          height="600"
+        >
+        {% if product.images[1] %}
+          <img
+            src="{{ product.images[1] | image_url: width: 600 }}"
+            alt="{{ product.images[1].alt | escape | default: product.title }}"
+            class="product-card__img product-card__img--hover"
+            loading="lazy"
+            width="600"
+            height="600"
+          >
+        {% endif %}
+      {% else %}
+        <div class="product-card__no-img">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="100" cy="120" rx="55" ry="65" fill="#F5C842" opacity="0.6"/>
+            <ellipse cx="100" cy="100" rx="45" ry="55" fill="#C8860A" opacity="0.8"/>
+            <rect x="85" y="55" width="30" height="20" rx="5" fill="#8B4513"/>
+          </svg>
+        </div>
+      {% endif %}
+    </a>
+
+    <div class="product-card__badges">
+      {% if product.available == false %}
+        <span class="product-badge product-badge--sold-out">Sold Out</span>
+      {% elsif product.compare_at_price > product.price %}
+        {% assign discount = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price %}
+        <span class="product-badge product-badge--sale">{{ discount }}% Off</span>
+      {% elsif product.tags contains 'new' %}
+        <span class="product-badge product-badge--new">New</span>
+      {% elsif product.tags contains 'bestseller' %}
+        <span class="product-badge product-badge--best">Bestseller</span>
+      {% endif %}
+    </div>
+
+    <div class="product-card__actions">
+      {% if product.available %}
+        <button
+          class="product-card__atc btn btn--primary btn--sm"
+          data-product-id="{{ product.id }}"
+          data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+          {% if product.variants.size > 1 %}
+            onclick="window.location.href='{{ product.url }}'"
+          {% else %}
+            onclick="addToCart({{ product.selected_or_first_available_variant.id }}, 1)"
+          {% endif %}
+        >
+          {% if product.variants.size > 1 %}
+            Choose Options
+          {% else %}
+            Add to Cart
+          {% endif %}
+        </button>
+      {% else %}
+        <button class="product-card__atc btn btn--outline btn--sm" disabled>Sold Out</button>
+      {% endif %}
+      <a href="{{ product.url }}" class="product-card__wishlist" aria-label="View {{ product.title }}">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="product-card__info">
+    {% if product.vendor != blank %}
+      <p class="product-card__vendor">{{ product.vendor }}</p>
+    {% endif %}
+
+    <h3 class="product-card__title">
+      <a href="{{ product.url }}">{{ product.title }}</a>
+    </h3>
+
+    {% if product.metafields.custom.weight_options != blank %}
+      <p class="product-card__weight">{{ product.metafields.custom.weight_options }}</p>
+    {% endif %}
+
+    <div class="product-card__price-wrap">
+      {% if product.compare_at_price > product.price %}
+        <span class="product-card__price product-card__price--sale">{{ product.price | money }}</span>
+        <span class="product-card__price product-card__price--compare">{{ product.compare_at_price | money }}</span>
+      {% else %}
+        <span class="product-card__price">{{ product.price | money }}</span>
+      {% endif %}
+    </div>
+
+    {% if product.metafields.reviews.rating.value != blank %}
+      <div class="product-card__rating">
+        {% assign rating_value = product.metafields.reviews.rating.value | times: 1 %}
+        {% for i in (1..5) %}
+          <svg width="12" height="12" viewBox="0 0 24 24" {% if i <= rating_value %}fill="#F5C842"{% else %}fill="#DDD"{% endif %}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        {% endfor %}
+        {% if product.metafields.reviews.rating_count != blank %}
+          <span class="product-card__rating-count">({{ product.metafields.reviews.rating_count.value }})</span>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>

@@ -1,0 +1,164 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Straight from the Himalayas",
+        "heading": "Nature's Purest Gold, From the Heart of Himachal , Kashmir, Uttrakhand",
+        "subheading": "Unprocessed. Unfiltered. Untouched. Our bees roam wild Himalayan meadows to bring you honey in its most authentic form.",
+        "button_text": "Shop Pure Honey",
+        "button_link": "/collections/all",
+        "button_text_2": "Our Story",
+        "button_link_2": "/pages/our-story"
+      }
+    },
+    "trust_bar": {
+      "type": "trust-bar",
+      "blocks": {
+        "block-1": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "shield",
+            "title": "100% Pure & Raw",
+            "description": "No heating, no filtering, no additives"
+          }
+        },
+        "block-2": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "leaf",
+            "title": "Naturally Organic",
+            "description": "Sourced from pristine Himalayan forests"
+          }
+        },
+        "block-3": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "truck",
+            "title": "Free Shipping",
+            "description": "On all orders above ₹999 across India"
+          }
+        },
+        "block-4": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "award",
+            "title": "Lab Tested",
+            "description": "FSSAI certified, quality guaranteed"
+          }
+        },
+        "block-5": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "globe",
+            "title": "Direct from Farmers",
+            "description": "Supporting local Himachali beekeepers"
+          }
+        }
+      },
+      "block_order": ["block-1", "block-2", "block-3", "block-4", "block-5"]
+    },
+    "featured_products": {
+      "type": "featured-products",
+      "settings": {
+        "eyebrow": "Our Bestsellers",
+        "title": "Pure Honey, Straight from the Hive",
+        "subtitle": "Every jar tells the story of Himalayan wildflowers, patient bees, and generations of beekeeping wisdom.",
+        "products_to_show": 4,
+        "columns": "4",
+        "button_text": "View All Products",
+        "button_link": "/collections/all"
+      }
+    },
+    "our_story": {
+      "type": "our-story",
+      "blocks": {
+        "hl-1": {
+          "type": "highlight",
+          "settings": { "text": "Hand-harvested by local Himachali farmers" }
+        },
+        "hl-2": {
+          "type": "highlight",
+          "settings": { "text": "Cold-extracted to preserve all natural enzymes" }
+        },
+        "hl-3": {
+          "type": "highlight",
+          "settings": { "text": "Zero heating, zero filtering, zero compromises" }
+        },
+        "hl-4": {
+          "type": "highlight",
+          "settings": { "text": "FSSAI certified and lab-tested for purity" }
+        }
+      },
+      "block_order": ["hl-1", "hl-2", "hl-3", "hl-4"],
+      "settings": {
+        "eyebrow": "Our Story",
+        "heading": "Born in the Valleys, Raised by the Mountains",
+        "stat_number": "15+",
+        "stat_label": "Years of Beekeeping",
+        "button_text": "Read Our Full Story",
+        "button_link": "/pages/our-story"
+      }
+    },
+    "why_choose": {
+      "type": "why-choose-us",
+      "blocks": {
+        "f1": { "type": "feature", "settings": { "icon": "mountain", "title": "Himalayan Origin", "description": "Sourced from pristine alpine forests of Himachal Pradesh at elevations above 1500 metres, where pollution is zero and biodiversity is unmatched." } },
+        "f2": { "type": "feature", "settings": { "icon": "bee", "title": "Wild Bee Colonies", "description": "Our bees are never fed sugar syrups. They forage freely on 200+ varieties of Himalayan wildflowers, medicinal herbs, and forest flora." } },
+        "f3": { "type": "feature", "settings": { "icon": "lab", "title": "Lab Tested & FSSAI Certified", "description": "Every batch is independently tested for purity, HMF levels, moisture, and adulteration. Certificates available on request." } },
+        "f4": { "type": "feature", "settings": { "icon": "leaf", "title": "Cold Extracted", "description": "We never heat our honey. Cold extraction preserves all live enzymes, antioxidants, pollen, and the natural goodness of raw honey." } },
+        "f5": { "type": "feature", "settings": { "icon": "heart", "title": "Farmer First", "description": "We pay Himachali beekeepers 40% above market rate, ensuring sustainable livelihoods and ethical harvesting practices." } },
+        "f6": { "type": "feature", "settings": { "icon": "truck", "title": "Fast Pan-India Delivery", "description": "Dispatched within 24 hours, delivered across all 28 states. Temperature-controlled packaging ensures freshness." } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4", "f5", "f6"],
+      "settings": {
+        "eyebrow": "The Himachal Difference",
+        "title": "Why Our Honey is Different",
+        "subtitle": "Not all honey is created equal. Here's what sets Himachal Valley apart.",
+        "background_color": "#FFF3E0"
+      }
+    },
+    "honey_process": {
+      "type": "honey-process",
+      "blocks": {
+        "s1": { "type": "step", "settings": { "title": "Wild Bees Forage", "description": "Our bees fly up to 3km across pristine Himalayan meadows collecting nectar from over 200 wildflower varieties." } },
+        "s2": { "type": "step", "settings": { "title": "Hive Maturation", "description": "The bees naturally convert nectar to honey. We wait until the comb is fully capped — never rushing the process." } },
+        "s3": { "type": "step", "settings": { "title": "Cold Extraction", "description": "Frames are cold-spun below 37°C preserving every enzyme, antioxidant, and pollen grain." } },
+        "s4": { "type": "step", "settings": { "title": "Packed & Delivered", "description": "Filled into glass jars, sealed, lab-tested, and dispatched to your doorstep within 24 hours." } }
+      },
+      "block_order": ["s1", "s2", "s3", "s4"],
+      "settings": {
+        "eyebrow": "From Hive to Home",
+        "title": "The Journey of Your Honey",
+        "subtitle": "Every jar of Himachal Valley honey follows a sacred, time-honoured process."
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "r1": { "type": "review", "settings": { "rating": 5, "review": "I switched from supermarket honey to Himachal Valley 6 months ago and I will never go back. The taste difference is incredible — you can smell the Himalayan flowers in each spoonful.", "name": "Arjun Mehta", "location": "Delhi", "verified": true, "product_name": "Kashmiri Acacia Honey 500g" } },
+        "r2": { "type": "review", "settings": { "rating": 5, "review": "Ordered for my diabetic mother. The doctor said raw honey is better and this one is exactly what she needed. Packing is beautiful, delivery was in 2 days.", "name": "Sunita Patel", "location": "Ahmedabad, Gujarat", "verified": true, "product_name": "Raw Organic Honey 250g" } },
+        "r3": { "type": "review", "settings": { "rating": 5, "review": "The Diwali gift hamper was a massive hit. Everyone was asking where I got such premium quality honey. The packaging is truly luxury level.", "name": "Rohan Nair", "location": "Bengaluru, Karnataka", "verified": true, "product_name": "Diwali Honey Gift Set" } },
+        "r4": { "type": "review", "settings": { "rating": 5, "review": "As a nutritionist, I always recommend raw honey to clients. Himachal Valley is the only brand I trust completely. Lab certified, raw, and the taste is exceptional.", "name": "Dr. Kavya Reddy", "location": "Hyderabad, Telangana", "verified": true, "product_name": "Wild Forest Honey 1kg" } }
+      },
+      "block_order": ["r1", "r2", "r3", "r4"],
+      "settings": {
+        "eyebrow": "Customer Love",
+        "title": "What India Says About Us",
+        "rating_text": "4.9/5 from 2,400+ happy customers across India"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Join the Hive",
+        "title": "Get ₹100 Off Your First Order",
+        "subtitle": "Subscribe for exclusive offers, honey recipes, and stories from our beekeepers in the Himalayas.",
+        "button_text": "Claim Your Discount",
+        "bg_from": "#C8860A",
+        "bg_to": "#8B4513"
+      }
+    }
+  },
+  "order": ["hero", "trust_bar", "featured_products", "our_story", "why_choose", "honey_process", "testimonials", "newsletter"]
+}

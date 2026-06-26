@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "our-story",
+      "settings": {
+        "button_text": ""
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

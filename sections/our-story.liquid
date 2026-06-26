@@ -1,0 +1,172 @@
+<section class="our-story section-padding">
+  <div class="container">
+    <div class="our-story__grid">
+      <div class="our-story__media">
+        {% if section.settings.image %}
+          <div class="our-story__img-wrap">
+            <img
+              src="{{ section.settings.image | image_url: width: 800 }}"
+              alt="{{ section.settings.image.alt | escape }}"
+              class="our-story__img"
+              loading="lazy"
+            >
+          </div>
+        {% else %}
+          <div class="our-story__img-wrap our-story__img-wrap--placeholder">
+            <div class="our-story__placeholder">
+              <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" width="100%">
+                <!-- Mountain silhouette -->
+                <defs>
+                  <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#FFF8F0;stop-opacity:1" />
+                  </linearGradient>
+                  <linearGradient id="mountainGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#6B8E5E;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#4A6741;stop-opacity:1" />
+                  </linearGradient>
+                </defs>
+                <rect width="400" height="500" fill="url(#skyGrad)"/>
+                <!-- Mountains -->
+                <polygon points="0,350 100,150 200,280 300,100 400,250 400,500 0,500" fill="url(#mountainGrad)"/>
+                <polygon points="150,280 250,120 350,220 400,180 400,500 100,500" fill="#3D5A35" opacity="0.7"/>
+                <!-- Snow caps -->
+                <polygon points="300,100 285,140 315,140" fill="white" opacity="0.9"/>
+                <polygon points="100,150 88,185 112,185" fill="white" opacity="0.8"/>
+                <!-- Sun -->
+                <circle cx="340" cy="60" r="30" fill="#F5C842" opacity="0.9"/>
+                <!-- Honey drip -->
+                <ellipse cx="200" cy="370" rx="40" ry="50" fill="#C8860A" opacity="0.85"/>
+                <rect x="190" y="310" width="20" height="60" rx="10" fill="#C8860A" opacity="0.7"/>
+                <!-- Bees -->
+                <ellipse cx="120" cy="200" rx="8" ry="5" fill="#F5C842"/>
+                <ellipse cx="280" cy="170" rx="6" ry="4" fill="#F5C842"/>
+              </svg>
+            </div>
+          </div>
+        {% endif %}
+        {% if section.settings.image_2 %}
+          <div class="our-story__img-wrap our-story__img-wrap--secondary">
+            <img
+              src="{{ section.settings.image_2 | image_url: width: 400 }}"
+              alt="{{ section.settings.image_2.alt | escape }}"
+              class="our-story__img"
+              loading="lazy"
+            >
+          </div>
+        {% endif %}
+        <div class="our-story__stat-card">
+          <span class="our-story__stat-number">{{ section.settings.stat_number | default: '15+' }}</span>
+          <span class="our-story__stat-label">{{ section.settings.stat_label | default: 'Years of Beekeeping' }}</span>
+        </div>
+      </div>
+
+      <div class="our-story__content">
+        {% if section.settings.eyebrow != blank %}
+          <p class="section-eyebrow">{{ section.settings.eyebrow }}</p>
+        {% endif %}
+        <h2 class="section-title">{{ section.settings.heading }}</h2>
+        <div class="our-story__body rte">
+          {{ section.settings.content }}
+        </div>
+        <div class="our-story__highlights">
+          {% for block in section.blocks %}
+            <div class="our-story__highlight" {{ block.shopify_attributes }}>
+              <div class="our-story__highlight-dot"></div>
+              <p>{{ block.settings.text }}</p>
+            </div>
+          {% endfor %}
+        </div>
+        {% if section.settings.button_text != blank %}
+          <a href="{{ section.settings.button_link }}" class="btn btn--primary">
+            {{ section.settings.button_text }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Our Story",
+  "blocks": [
+    {
+      "type": "highlight",
+      "name": "Highlight Point",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Highlight Text",
+          "default": "Hand-harvested by local Himachali farmers"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Main Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Secondary Image (optional)"
+    },
+    {
+      "type": "text",
+      "id": "stat_number",
+      "label": "Stat Number",
+      "default": "15+"
+    },
+    {
+      "type": "text",
+      "id": "stat_label",
+      "label": "Stat Label",
+      "default": "Years of Beekeeping"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Our Story"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Born in the Valleys, Raised by the Mountains"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+      "default": "<p>Nestled in the pristine valleys of Himachal Pradesh, our story begins with a deep love for the mountains and their gifts. Three generations of our family have tended to beehives in the untouched forests of Kangra and Kullu, where wildflowers bloom in abundance and the air is pure.</p><p>We believe honey should be exactly as nature intended — raw, unfiltered, and alive with enzymes, antioxidants, and the unique terroir of the Himalayas.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Read Our Full Story"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Our Story",
+      "blocks": [
+        {"type": "highlight", "settings": {"text": "Hand-harvested by local Himachali farmers"}},
+        {"type": "highlight", "settings": {"text": "Cold-extracted to preserve all natural enzymes"}},
+        {"type": "highlight", "settings": {"text": "Zero heating, zero filtering, zero compromises"}},
+        {"type": "highlight", "settings": {"text": "FSSAI certified and lab-tested for purity"}}
+      ]
+    }
+  ]
+}
+{% endschema %}

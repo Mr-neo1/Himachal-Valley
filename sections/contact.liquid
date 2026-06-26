@@ -1,0 +1,135 @@
+<section class="contact section-padding">
+  <div class="container container--narrow">
+    <div class="section-header section-header--center">
+      <p class="section-eyebrow">Get in Touch</p>
+      <h1 class="section-title">Contact Us</h1>
+      <p class="section-subtitle">Have a question or need assistance? We're here to help.</p>
+    </div>
+
+    <div class="contact__grid">
+      <div class="contact__info">
+        <h3 class="contact__info-title">Our Details</h3>
+        <ul class="contact__info-list">
+          <li>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Kangra Valley, Himachal Pradesh, India</span>
+          </li>
+          <li>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>hello@himachalvalley.com</span>
+          </li>
+          <li>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <span>+91 98765 43210</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="contact__form-wrap">
+        {% form 'contact', class: 'contact-form' %}
+          {% if form.posted_successfully? %}
+            <div class="form-success">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              Thank you for contacting us. We will get back to you soon.
+            </div>
+          {% endif %}
+
+          {{ form.errors | default_errors }}
+
+          <div class="form-group">
+            <label for="ContactFormName" class="sr-only">Name</label>
+            <input type="text" id="ContactFormName" name="contact[name]" placeholder="Your Name" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="ContactFormEmail" class="sr-only">Email</label>
+            <input type="email" id="ContactFormEmail" name="contact[email]" placeholder="Your Email" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="ContactFormMessage" class="sr-only">Message</label>
+            <textarea id="ContactFormMessage" name="contact[body]" rows="5" placeholder="Your Message" class="form-control" required></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">Send Message</button>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.contact__grid {
+  display: grid;
+  gap: 48px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .contact__grid { grid-template-columns: 1fr 1.5fr; gap: 64px; }
+}
+
+.contact__info-title {
+  font-size: 1.4rem;
+  margin-bottom: 24px;
+}
+.contact__info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.contact__info-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: var(--color-text-light);
+}
+.contact__info-list svg {
+  color: var(--color-primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.contact-form {
+  background: var(--color-white);
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+}
+.form-group {
+  margin-bottom: 16px;
+}
+.form-control {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  background: var(--color-background);
+  transition: border-color var(--transition);
+}
+.form-control:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+.form-success {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  background: rgba(76, 175, 80, 0.1);
+  color: var(--color-success);
+  border-radius: var(--radius-md);
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Contact Page",
+  "presets": [
+    {
+      "name": "Contact Section"
+    }
+  ]
+}
+{% endschema %}

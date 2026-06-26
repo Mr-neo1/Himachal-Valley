@@ -1,0 +1,99 @@
+<section class="newsletter" style="background: linear-gradient(135deg, {{ section.settings.bg_from }}, {{ section.settings.bg_to }});">
+  <div class="newsletter__honey-drip"></div>
+  <div class="container">
+    <div class="newsletter__inner">
+      <div class="newsletter__content">
+        {% if section.settings.eyebrow != blank %}
+          <p class="section-eyebrow section-eyebrow--light">{{ section.settings.eyebrow }}</p>
+        {% endif %}
+        <h2 class="newsletter__title">{{ section.settings.title }}</h2>
+        <p class="newsletter__subtitle">{{ section.settings.subtitle }}</p>
+      </div>
+      <div class="newsletter__form-wrap">
+        {% form 'customer', id: 'newsletter-form' %}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <div class="newsletter__form">
+            <input
+              type="email"
+              name="contact[email]"
+              placeholder="{{ section.settings.placeholder | default: 'Enter your email address' }}"
+              class="newsletter__input"
+              required
+            >
+            <button type="submit" class="newsletter__btn btn btn--primary">
+              {{ section.settings.button_text | default: 'Subscribe' }}
+            </button>
+          </div>
+          {% if form.posted_successfully? %}
+            <p class="newsletter__success">Thank you for subscribing! Your first discount code is on its way.</p>
+          {% endif %}
+          {% if form.errors %}
+            <p class="newsletter__error">{{ form.errors | default_errors }}</p>
+          {% endif %}
+        {% endform %}
+        <p class="newsletter__disclaimer">{{ section.settings.disclaimer }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Join the Hive"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Get ₹100 Off Your First Order"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Subscribe for exclusive offers, honey recipes, and stories from our beekeepers in the Himalayas."
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "Input Placeholder",
+      "default": "Enter your email address"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Claim Your Discount"
+    },
+    {
+      "type": "text",
+      "id": "disclaimer",
+      "label": "Disclaimer Text",
+      "default": "No spam. Unsubscribe anytime. We respect your inbox."
+    },
+    {
+      "type": "color",
+      "id": "bg_from",
+      "label": "Gradient Start Color",
+      "default": "#C8860A"
+    },
+    {
+      "type": "color",
+      "id": "bg_to",
+      "label": "Gradient End Color",
+      "default": "#8B4513"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter"
+    }
+  ]
+}
+{% endschema %}

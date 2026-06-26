@@ -1,0 +1,23 @@
+<div class="page-template section-padding">
+  <div class="container container--narrow">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <span>{{ page.title }}</span>
+    </nav>
+    <h1 class="page-title">{{ page.title }}</h1>
+    <div class="page-content rte">
+      {{ page.content }}
+    </div>
+  </div>
+</div>
+
+<style>
+.container--narrow { max-width: 800px; }
+.page-title { font-size: clamp(28px, 4vw, 48px); margin-bottom: 32px; color: var(--color-dark); }
+.page-content { font-size: 1.05rem; line-height: 1.8; color: var(--color-text-light); }
+.page-content h2 { color: var(--color-dark); font-size: 1.6rem; margin: 32px 0 16px; }
+.page-content h3 { color: var(--color-dark); font-size: 1.2rem; margin: 24px 0 12px; }
+.page-content p { margin-bottom: 1em; }
+.page-content a { color: var(--color-primary); text-decoration: underline; }
+</style>

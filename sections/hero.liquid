@@ -1,0 +1,134 @@
+<section class="hero" id="hero">
+  <div class="hero__media">
+    {% if section.settings.video_url != blank %}
+      <video class="hero__video" autoplay muted loop playsinline poster="{{ section.settings.image | image_url: width: 1920 }}">
+        <source src="{{ section.settings.video_url }}" type="video/mp4">
+      </video>
+    {% elsif section.settings.image %}
+      <img
+        src="{{ section.settings.image | image_url: width: 1920 }}"
+        srcset="{{ section.settings.image | image_url: width: 800 }} 800w, {{ section.settings.image | image_url: width: 1200 }} 1200w, {{ section.settings.image | image_url: width: 1920 }} 1920w"
+        sizes="100vw"
+        alt="{{ section.settings.image.alt | escape }}"
+        class="hero__img"
+        loading="eager"
+        fetchpriority="high"
+      >
+    {% else %}
+      <img src="{{ 'himachal_hero.png' | asset_url }}" alt="Himachal Valley Pure Mountain Honey" class="hero__img" loading="eager" fetchpriority="high">
+    {% endif %}
+    <div class="hero__overlay"></div>
+  </div>
+
+  <div class="hero__content container">
+    <div class="hero__content-inner">
+      {% if section.settings.eyebrow != blank %}
+        <p class="hero__eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h1 class="hero__heading">{{ section.settings.heading }}</h1>
+      {% endif %}
+
+      {% if section.settings.subheading != blank %}
+        <p class="hero__subheading">{{ section.settings.subheading }}</p>
+      {% endif %}
+
+      <div class="hero__badges">
+        <div class="hero__badge">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>100% Pure</span>
+        </div>
+        <div class="hero__badge">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span>Farm Direct</span>
+        </div>
+        <div class="hero__badge">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>
+          <span>Himalayan Origin</span>
+        </div>
+      </div>
+
+      <div class="hero__actions">
+        {% if section.settings.button_text != blank %}
+          <a href="{{ section.settings.button_link }}" class="btn btn--primary btn--lg">
+            {{ section.settings.button_text }}
+          </a>
+        {% endif %}
+        {% if section.settings.button_text_2 != blank %}
+          <a href="{{ section.settings.button_link_2 }}" class="btn btn--outline-light btn--lg">
+            {{ section.settings.button_text_2 }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__scroll-hint">
+    <span>Scroll to Discover</span>
+    <div class="hero__scroll-line"></div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "video_url",
+      "label": "Background Video URL (optional)"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Straight from the Himalayas"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Nature's Purest Gold, From the Heart of Himachal, Kashmir, Uttrakhand"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Unprocessed. Unfiltered. Untouched. Our bees roam the wild Himalayan meadows to bring you honey in its most authentic form."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Primary Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "button_text_2",
+      "label": "Secondary Button Text",
+      "default": "Our Story"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Secondary Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner"
+    }
+  ]
+}
+{% endschema %}
