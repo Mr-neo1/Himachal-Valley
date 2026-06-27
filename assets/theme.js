@@ -221,46 +221,49 @@
   /* ---- Testimonials Slider ---- */
   const slider = document.getElementById('testimonials-slider');
   if (slider) {
-    const cards = slider.querySelectorAll('.testimonial-card');
-    const dotsContainer = document.getElementById('testimonials-dots');
-    const prevBtn = slider.querySelector('.testimonials__nav--prev');
-    const nextBtn = slider.querySelector('.testimonials__nav--next');
-    const perPage = window.innerWidth >= 1024 ? 4 : window.innerWidth >= 768 ? 2 : 1;
-    const totalPages = Math.ceil(cards.length / perPage);
-    let currentPage = 0;
-
-    if (totalPages > 1 && dotsContainer) {
-      for (let i = 0; i < totalPages; i++) {
-        const dot = document.createElement('button');
-        dot.className = 'testimonials__dot' + (i === 0 ? ' testimonials__dot--active' : '');
-        dot.setAttribute('aria-label', `Go to page ${i + 1}`);
-        dot.addEventListener('click', () => goToPage(i));
-        dotsContainer.appendChild(dot);
+    // Only run JS slider logic on desktop/tablet. Mobile uses native CSS scroll-snap edge-to-edge slider.
+    if (window.innerWidth >= 768) {
+      const cards = slider.querySelectorAll('.testimonial-card');
+      const dotsContainer = document.getElementById('testimonials-dots');
+      const prevBtn = slider.querySelector('.testimonials__nav--prev');
+      const nextBtn = slider.querySelector('.testimonials__nav--next');
+      const perPage = window.innerWidth >= 1024 ? 4 : 2;
+      const totalPages = Math.ceil(cards.length / perPage);
+      let currentPage = 0;
+  
+      if (totalPages > 1 && dotsContainer) {
+        for (let i = 0; i < totalPages; i++) {
+          const dot = document.createElement('button');
+          dot.className = 'testimonials__dot' + (i === 0 ? ' testimonials__dot--active' : '');
+          dot.setAttribute('aria-label', `Go to page ${i + 1}`);
+          dot.addEventListener('click', () => goToPage(i));
+          dotsContainer.appendChild(dot);
+        }
+        if (prevBtn) prevBtn.style.display = 'flex';
+        if (nextBtn) nextBtn.style.display = 'flex';
       }
-      if (prevBtn) prevBtn.style.display = 'flex';
-      if (nextBtn) nextBtn.style.display = 'flex';
-    }
-
-    function goToPage(page) {
-      currentPage = Math.max(0, Math.min(page, totalPages - 1));
-      const track = slider.querySelector('.testimonials__track');
-      if (track) {
-        track.style.transform = `translateX(-${currentPage * 100 / totalPages}%)`;
+  
+      function goToPage(page) {
+        currentPage = Math.max(0, Math.min(page, totalPages - 1));
+        const track = slider.querySelector('.testimonials__track');
+        if (track) {
+          track.style.transform = `translateX(-${currentPage * 100 / totalPages}%)`;
+        }
+        dotsContainer?.querySelectorAll('.testimonials__dot').forEach((d, i) => {
+          d.classList.toggle('testimonials__dot--active', i === currentPage);
+        });
       }
-      dotsContainer?.querySelectorAll('.testimonials__dot').forEach((d, i) => {
-        d.classList.toggle('testimonials__dot--active', i === currentPage);
+  
+      prevBtn?.addEventListener('click', () => goToPage(currentPage > 0 ? currentPage - 1 : totalPages - 1));
+      nextBtn?.addEventListener('click', () => goToPage(currentPage < totalPages - 1 ? currentPage + 1 : 0));
+  
+      // Auto-advance
+      let autoPlay = setInterval(() => goToPage(currentPage < totalPages - 1 ? currentPage + 1 : 0), 5000);
+      slider.addEventListener('mouseenter', () => clearInterval(autoPlay));
+      slider.addEventListener('mouseleave', () => {
+        autoPlay = setInterval(() => goToPage(currentPage < totalPages - 1 ? currentPage + 1 : 0), 5000);
       });
     }
-
-    prevBtn?.addEventListener('click', () => goToPage(currentPage > 0 ? currentPage - 1 : totalPages - 1));
-    nextBtn?.addEventListener('click', () => goToPage(currentPage < totalPages - 1 ? currentPage + 1 : 0));
-
-    // Auto-advance
-    let autoPlay = setInterval(() => goToPage(currentPage < totalPages - 1 ? currentPage + 1 : 0), 5000);
-    slider.addEventListener('mouseenter', () => clearInterval(autoPlay));
-    slider.addEventListener('mouseleave', () => {
-      autoPlay = setInterval(() => goToPage(currentPage < totalPages - 1 ? currentPage + 1 : 0), 5000);
-    });
   }
 
   /* ---- Announcement Bar Scroll Ticker ---- */
