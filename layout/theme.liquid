@@ -143,25 +143,33 @@
       if (window.matchMedia("(min-width: 768px)").matches) {
         document.body.classList.add('custom-cursor-enabled');
       } else {
-        // On mobile, show the bee when scrolling
-        let scrollTimeout;
-        window.addEventListener('scroll', () => {
+        // On mobile, show the bee on touch/scroll and follow finger
+        let activityTimeout;
+        const showMobileBee = () => {
           document.body.classList.add('custom-cursor-enabled');
-          // Make the bee flutter on the right side of the screen
-          mouseX = window.innerWidth - 40;
-          mouseY = (window.innerHeight / 2) + Math.sin(Date.now() / 200) * 80;
-          
-          clearTimeout(scrollTimeout);
-          scrollTimeout = setTimeout(() => {
+          clearTimeout(activityTimeout);
+          activityTimeout = setTimeout(() => {
             document.body.classList.remove('custom-cursor-enabled');
           }, 800);
-        }, {passive: true});
+        };
+        
+        window.addEventListener('scroll', showMobileBee, {passive: true});
+        
+        const updateTouchPosition = (e) => {
+          // Offset slightly so the bee isn't hidden under the user's thumb
+          mouseX = e.touches[0].clientX + 25;
+          mouseY = e.touches[0].clientY - 40;
+          showMobileBee();
+        };
+        
+        window.addEventListener('touchstart', updateTouchPosition, {passive: true});
+        window.addEventListener('touchmove', updateTouchPosition, {passive: true});
       }
         
-        document.addEventListener('mousemove', (e) => {
-          mouseX = e.clientX;
-          mouseY = e.clientY;
-        });
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
 
         function animate() {
           frameCount++;
