@@ -11,6 +11,7 @@
         sizes="100vw"
         alt="{{ section.settings.image.alt | escape }}"
         class="hero__img"
+        style="object-position: {{ section.settings.image_position }};"
         loading="eager"
         fetchpriority="high"
       >
@@ -78,6 +79,19 @@
       "type": "image_picker",
       "id": "image",
       "label": "Background Image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image Focal Point",
+      "options": [
+        { "value": "left center", "label": "Left" },
+        { "value": "center center", "label": "Center" },
+        { "value": "right center", "label": "Right" },
+        { "value": "center top", "label": "Top" },
+        { "value": "center bottom", "label": "Bottom" }
+      ],
+      "default": "center center"
     },
     {
       "type": "text",
