@@ -1,36 +1,4 @@
 <footer class="site-footer">
-  <!-- Newsletter Block -->
-  <div class="site-footer__newsletter">
-    <div class="container container--narrow">
-      <div class="footer-newsletter">
-        <div class="footer-newsletter__content">
-          <h3 class="footer-newsletter__title">Join the Hive</h3>
-          <p class="footer-newsletter__desc">Subscribe for exclusive offers, recipes, and updates from the valley.</p>
-        </div>
-        {% form 'customer', class: 'footer-newsletter__form' %}
-          <input type="hidden" name="contact[tags]" value="newsletter">
-          <div class="newsletter-input-group">
-            <input type="email"
-              name="contact[email]"
-              id="Email"
-              class="newsletter-input-group__input"
-              value="{% if customer %}{{ customer.email }}{% endif %}"
-              placeholder="Enter your email address"
-              autocorrect="off"
-              autocapitalize="off"
-              required>
-            <button type="submit" class="btn btn--primary newsletter-input-group__btn" name="commit" id="Subscribe">
-              Subscribe
-            </button>
-          </div>
-          {% if form.posted_successfully? %}
-            <p class="newsletter-success-msg">Thank you for joining our hive!</p>
-          {% endif %}
-        {% endform %}
-      </div>
-    </div>
-  </div>
-
   <div class="site-footer__main">
     <div class="container">
       <div class="site-footer__grid">
@@ -149,7 +117,7 @@
     <div class="container">
       <div class="site-footer__bottom-inner">
         <p>&copy; {{ 'now' | date: '%Y' }} Himachal Valley. All rights reserved.</p>
-        <p class="site-footer__made-in">Made with <span style="color: #e25555;">&hearts;</span> in Himachal Pradesh</p>
+        <p class="site-footer__made-in">Made with <span style="color: #e25555;">&hearts;</span> in India</p>
         <div class="site-footer__bottom-links">
           <a href="/pages/privacy">Privacy Policy</a>
           <a href="/pages/terms">Terms of Service</a>
