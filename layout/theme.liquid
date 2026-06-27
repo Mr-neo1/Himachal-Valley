@@ -142,12 +142,15 @@
         let beeX = mouseX;
         let beeY = mouseY;
         
+        let frameCount = 0;
+        
         document.addEventListener('mousemove', (e) => {
           mouseX = e.clientX;
           mouseY = e.clientY;
         });
 
         function animate() {
+          frameCount++;
           const dx = mouseX - beeX;
           const dy = mouseY - beeY;
           
@@ -160,11 +163,24 @@
           // Offset because the generated top-down bee faces "up"
           angle += 90;
           
+          // Calculate movement speed for flapping
+          const speed = Math.sqrt(dx * dx + dy * dy);
+          let scaleX = 1.0;
+          let scaleY = 1.0;
+          
+          if (speed > 1.5) {
+            // Rapidly alternate scaleX to simulate wings flapping when moving
+            if (frameCount % 4 < 2) {
+              scaleX = 0.75;
+              scaleY = 1.05; // slight stretch for dynamic feel
+            }
+          }
+          
           // Only rotate if moving significantly
           if (Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5) {
-            bee.style.transform = `translate3d(${beeX}px, ${beeY}px, 0) rotate(${angle}deg)`;
+            bee.style.transform = `translate3d(${beeX}px, ${beeY}px, 0) rotate(${angle}deg) scale(${scaleX}, ${scaleY})`;
           } else {
-            bee.style.transform = `translate3d(${beeX}px, ${beeY}px, 0) rotate(0deg)`;
+            bee.style.transform = `translate3d(${beeX}px, ${beeY}px, 0) rotate(0deg) scale(1, 1)`;
           }
           
           requestAnimationFrame(animate);
