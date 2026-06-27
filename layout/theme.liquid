@@ -132,17 +132,31 @@
   </div>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Only enable on desktop
+      const bee = document.getElementById('bee-cursor');
+      let mouseX = window.innerWidth / 2;
+      let mouseY = window.innerHeight / 2;
+      let beeX = mouseX;
+      let beeY = mouseY;
+      let frameCount = 0;
+      
+      // Enable permanent cursor on desktop
       if (window.matchMedia("(min-width: 768px)").matches) {
         document.body.classList.add('custom-cursor-enabled');
-        
-        const bee = document.getElementById('bee-cursor');
-        let mouseX = window.innerWidth / 2;
-        let mouseY = window.innerHeight / 2;
-        let beeX = mouseX;
-        let beeY = mouseY;
-        
-        let frameCount = 0;
+      } else {
+        // On mobile, show the bee when scrolling
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+          document.body.classList.add('custom-cursor-enabled');
+          // Make the bee flutter on the right side of the screen
+          mouseX = window.innerWidth - 40;
+          mouseY = (window.innerHeight / 2) + Math.sin(Date.now() / 200) * 80;
+          
+          clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(() => {
+            document.body.classList.remove('custom-cursor-enabled');
+          }, 800);
+        }, {passive: true});
+      }
         
         document.addEventListener('mousemove', (e) => {
           mouseX = e.clientX;
@@ -193,7 +207,6 @@
           el.addEventListener('mouseenter', () => bee.classList.add('bee-cursor--hover'));
           el.addEventListener('mouseleave', () => bee.classList.remove('bee-cursor--hover'));
         });
-      }
     });
   </script>
 
