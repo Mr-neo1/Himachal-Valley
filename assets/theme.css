@@ -1096,12 +1096,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 @media (min-width: 768px) {
   .testimonial-card {
-    min-width: calc(50vw - 32px);
+    min-width: calc(50% - 12px);
   }
 }
 @media (min-width: 1024px) {
   .testimonial-card {
-    min-width: calc(25vw - 24px);
+    min-width: calc(25% - 18px);
   }
 }
 .testimonial-card:hover {
