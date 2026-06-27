@@ -5,15 +5,18 @@
         <source src="{{ section.settings.video_url }}" type="video/mp4">
       </video>
     {% elsif section.settings.image %}
-      <img
-        src="{{ section.settings.image | image_url: width: 1920 }}"
-        srcset="{{ section.settings.image | image_url: width: 800 }} 800w, {{ section.settings.image | image_url: width: 1200 }} 1200w, {{ section.settings.image | image_url: width: 1920 }} 1920w"
-        sizes="100vw"
-        alt="{{ section.settings.image.alt | escape }}"
-        class="hero__img"
-        loading="eager"
-        fetchpriority="high"
-      >
+      <div class="hero__img-wrapper">
+        <img src="{{ section.settings.image | image_url: width: 1920 }}" class="hero__img-blur" alt="" aria-hidden="true" loading="eager" fetchpriority="high">
+        <img
+          src="{{ section.settings.image | image_url: width: 1920 }}"
+          srcset="{{ section.settings.image | image_url: width: 800 }} 800w, {{ section.settings.image | image_url: width: 1200 }} 1200w, {{ section.settings.image | image_url: width: 1920 }} 1920w"
+          sizes="100vw"
+          alt="{{ section.settings.image.alt | escape }}"
+          class="hero__img-contain"
+          loading="eager"
+          fetchpriority="high"
+        >
+      </div>
     {% else %}
       <img src="{{ 'himachal_hero.png' | asset_url }}" alt="Himachal Valley Pure Mountain Honey" class="hero__img" loading="eager" fetchpriority="high">
     {% endif %}

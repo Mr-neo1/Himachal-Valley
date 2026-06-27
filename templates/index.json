@@ -81,16 +81,13 @@
           "type": "highlight",
           "settings": { "text": "Cold-extracted to preserve all natural enzymes" }
         },
-        "hl-3": {
-          "type": "highlight",
-          "settings": { "text": "Zero heating, zero filtering, zero compromises" }
-        },
+
         "hl-4": {
           "type": "highlight",
           "settings": { "text": "FSSAI certified and lab-tested for purity" }
         }
       },
-      "block_order": ["hl-1", "hl-2", "hl-3", "hl-4"],
+      "block_order": ["hl-1", "hl-2", "hl-4"],
       "settings": {
         "eyebrow": "Our Story",
         "heading": "Born in the Valleys, Raised by the Mountains",
