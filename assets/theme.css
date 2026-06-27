@@ -2165,6 +2165,35 @@ h1, h2, h3, h4, h5, h6 {
   .testimonials__nav { display: none !important; }
   .newsletter__form { flex-direction: column; }
   .newsletter__btn { width: 100%; }
+}
+
+/* --- Custom Bee Cursor --- */
+.bee-cursor {
+  position: fixed;
+  top: -14px;
+  left: -14px;
+  width: 28px;
+  height: 28px;
+  pointer-events: none;
+  z-index: 999999;
+  display: none;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+  transition: width 0.2s ease, height 0.2s ease;
+  will-change: transform;
+}
+.custom-cursor-enabled .bee-cursor {
+  display: block;
+}
+.custom-cursor-enabled, 
+.custom-cursor-enabled * {
+  cursor: none !important;
+}
+.bee-cursor--hover {
+  width: 36px;
+  height: 36px;
+  top: -18px;
+  left: -18px;
+}
   .product-page__gallery { flex-direction: column-reverse; }
   .product-gallery__thumbnails { flex-direction: row; width: 100%; overflow-x: auto; }
   .gallery-thumb { width: 60px; height: 60px; flex-shrink: 0; }

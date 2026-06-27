@@ -126,6 +126,65 @@
     </div>
   </div>
 
+  <!-- Custom Bee Cursor -->
+  <div id="bee-cursor" class="bee-cursor">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M14.5 9.5C14.5 9.5 16 6 19.5 6C19.5 6 19 9 15.5 10.5C15.5 10.5 15.5 11.5 16 12C16.5 12.5 17.5 12.5 17.5 12.5C19 9 22 8.5 22 8.5C22 12 18.5 13.5 18.5 13.5C19 14.5 19.5 15.5 19.5 17.5C19.5 19.5 17.5 21.5 15 21.5C12.5 21.5 10.5 19.5 10.5 17.5C10.5 15.5 11.5 15 12.5 14.5C12.5 14.5 11 11.5 7.5 11.5C7.5 11.5 4.5 11 4.5 7.5C4.5 7.5 7.5 7 9 8.5C9 8.5 10 7.5 10.5 7C11 6.5 11 5.5 11 5.5C9.5 2 12.5 1.5 12.5 1.5C12.5 1.5 12 4.5 13.5 6C13.5 6 14.5 8 14.5 9.5Z" fill="#F5C842" stroke="#2C1A0E" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M15 13.5L12 16.5" stroke="#2C1A0E" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M12.5 11L9.5 14" stroke="#2C1A0E" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Only enable on desktop
+      if (window.matchMedia("(min-width: 768px)").matches) {
+        document.body.classList.add('custom-cursor-enabled');
+        
+        const bee = document.getElementById('bee-cursor');
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let beeX = mouseX;
+        let beeY = mouseY;
+        
+        document.addEventListener('mousemove', (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+        });
+
+        function animate() {
+          const dx = mouseX - beeX;
+          const dy = mouseY - beeY;
+          
+          // Easing factor
+          beeX += dx * 0.2;
+          beeY += dy * 0.2;
+          
+          // Calculate rotation
+          let angle = Math.atan2(dy, dx) * 180 / Math.PI;
+          // Offset because the bee SVG points diagonally top-left to bottom-right (approx 135 deg)
+          angle -= 135;
+          
+          // Only rotate if moving significantly
+          if (Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5) {
+            bee.style.transform = `translate3d(${beeX}px, ${beeY}px, 0) rotate(${angle}deg)`;
+          } else {
+            bee.style.transform = `translate3d(${beeX}px, ${beeY}px, 0) rotate(0deg)`;
+          }
+          
+          requestAnimationFrame(animate);
+        }
+        animate();
+
+        // Add hover effects for interactive elements
+        const interactives = document.querySelectorAll('a, button, input, select');
+        interactives.forEach(el => {
+          el.addEventListener('mouseenter', () => bee.classList.add('bee-cursor--hover'));
+          el.addEventListener('mouseleave', () => bee.classList.remove('bee-cursor--hover'));
+        });
+      }
+    });
+  </script>
+
   {{ 'theme.js' | asset_url | script_tag }}
 </body>
 </html>
