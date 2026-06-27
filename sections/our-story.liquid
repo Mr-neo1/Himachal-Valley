@@ -21,26 +21,7 @@
             >
           </div>
         {% endif %}
-        
-        {% if section.settings.image_2 %}
-          <div class="our-story__img-wrap our-story__img-wrap--secondary">
-            <img
-              src="{{ section.settings.image_2 | image_url: width: 400 }}"
-              alt="{{ section.settings.image_2.alt | escape }}"
-              class="our-story__img"
-              loading="lazy"
-            >
-          </div>
-        {% else %}
-          <div class="our-story__img-wrap our-story__img-wrap--secondary">
-            <img
-              src="{{ 'our_story_2.png' | asset_url }}"
-              alt="Himachal Valley Pure Honey"
-              class="our-story__img"
-              loading="lazy"
-            >
-          </div>
-        {% endif %}
+
         <div class="our-story__stat-card">
           <span class="our-story__stat-number">{{ section.settings.stat_number | default: '10+' }}</span>
           <span class="our-story__stat-label">{{ section.settings.stat_label | default: 'Years of Experience' }}</span>
@@ -95,11 +76,7 @@
       "type": "image_picker",
       "id": "image",
       "label": "Main Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_2",
-      "label": "Secondary Image (optional)"
+
     },
     {
       "type": "text",

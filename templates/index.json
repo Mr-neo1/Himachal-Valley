@@ -4,7 +4,7 @@
       "type": "hero",
       "settings": {
         "eyebrow": "Straight from the Himalayas",
-        "heading": "Nature's Purest Gold, From the Heart of Himachal , Kashmir, Uttrakhand",
+        "heading": "Nature's Purest Gold, From the Heart of Himachal Valley",
         "subheading": "Unprocessed. Unfiltered. Untouched. Our bees roam wild Himalayan meadows to bring you honey in its most authentic form.",
         "button_text": "Shop Pure Honey",
         "button_link": "/collections/all",
@@ -136,7 +136,7 @@
     "testimonials": {
       "type": "testimonials",
       "blocks": {
-        "r1": { "type": "review", "settings": { "rating": 5, "review": "I switched from supermarket honey to Himachal Valley 6 months ago and I will never go back. The taste difference is incredible — you can smell the Himalayan flowers in each spoonful.", "name": "Arjun Mehta", "location": "Delhi", "verified": true, "product_name": "Kashmiri Acacia Honey 500g" } },
+        "r1": { "type": "review", "settings": { "rating": 5, "review": "I switched from supermarket honey to Himachal Valley 6 months ago and I will never go back. The taste difference is incredible — you can smell the Himalayan flowers in each spoonful.", "name": "Arjun Mehta", "location": "Delhi", "verified": true, "product_name": "Himachal Valley Acacia Honey 500g" } },
         "r2": { "type": "review", "settings": { "rating": 5, "review": "Ordered for my diabetic mother. The doctor said raw honey is better and this one is exactly what she needed. Packing is beautiful, delivery was in 2 days.", "name": "Sunita Patel", "location": "Ahmedabad, Gujarat", "verified": true, "product_name": "Raw Organic Honey 250g" } },
         "r3": { "type": "review", "settings": { "rating": 5, "review": "The Diwali gift hamper was a massive hit. Everyone was asking where I got such premium quality honey. The packaging is truly luxury level.", "name": "Rohan Nair", "location": "Bengaluru, Karnataka", "verified": true, "product_name": "Diwali Honey Gift Set" } },
         "r4": { "type": "review", "settings": { "rating": 5, "review": "As a nutritionist, I always recommend raw honey to clients. Himachal Valley is the only brand I trust completely. Lab certified, raw, and the taste is exceptional.", "name": "Dr. Kavya Reddy", "location": "Hyderabad, Telangana", "verified": true, "product_name": "Wild Forest Honey 1kg" } }
