@@ -143,8 +143,10 @@
       if (window.matchMedia("(min-width: 768px)").matches) {
         document.body.classList.add('custom-cursor-enabled');
       } else {
-        // On mobile, show the bee on touch/scroll and follow finger
+        // On mobile, keep the bee on a vertical line (right edge) and move based on scroll
         let activityTimeout;
+        let lastScrollY = window.scrollY;
+        
         const showMobileBee = () => {
           document.body.classList.add('custom-cursor-enabled');
           clearTimeout(activityTimeout);
@@ -153,17 +155,22 @@
           }, 800);
         };
         
-        window.addEventListener('scroll', showMobileBee, {passive: true});
-        
-        const updateTouchPosition = (e) => {
-          // Offset slightly so the bee isn't hidden under the user's thumb
-          mouseX = e.touches[0].clientX + 25;
-          mouseY = e.touches[0].clientY - 40;
+        window.addEventListener('scroll', () => {
           showMobileBee();
-        };
-        
-        window.addEventListener('touchstart', updateTouchPosition, {passive: true});
-        window.addEventListener('touchmove', updateTouchPosition, {passive: true});
+          
+          // Lock X to the right side of the screen
+          mouseX = window.innerWidth - 40;
+          
+          // Calculate scroll speed
+          const currentScroll = window.scrollY;
+          const scrollDelta = currentScroll - lastScrollY;
+          lastScrollY = currentScroll;
+          
+          // Center vertically, offset by scroll speed for dynamic flight
+          // Cap the movement to keep it on screen
+          const flightOffset = Math.min(Math.max(scrollDelta * 4, -150), 150);
+          mouseY = (window.innerHeight / 2) + flightOffset;
+        }, {passive: true});
       }
         
       document.addEventListener('mousemove', (e) => {
