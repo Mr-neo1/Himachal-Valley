@@ -505,6 +505,24 @@ h1, h2, h3, h4, h5, h6 {
   object-fit: cover;
   object-position: center;
 }
+.hero__split-media {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.hero__split-media .hero__img {
+  width: 50%;
+  height: 100%;
+}
+@media (max-width: 767px) {
+  .hero__split-media {
+    flex-direction: column;
+  }
+  .hero__split-media .hero__img {
+    width: 100%;
+    height: 50%;
+  }
+}
 .hero__placeholder {
   width: 100%;
   height: 100%;

@@ -4,6 +4,25 @@
       <video class="hero__video" autoplay muted loop playsinline poster="{{ section.settings.image | image_url: width: 1920 }}">
         <source src="{{ section.settings.video_url }}" type="video/mp4">
       </video>
+    {% elsif section.settings.image and section.settings.image_2 %}
+      <div class="hero__split-media">
+        <img
+          src="{{ section.settings.image | image_url: width: 960 }}"
+          alt="{{ section.settings.image.alt | escape }}"
+          class="hero__img hero__img--left"
+          style="object-position: {{ section.settings.image_position }};"
+          loading="eager"
+          fetchpriority="high"
+        >
+        <img
+          src="{{ section.settings.image_2 | image_url: width: 960 }}"
+          alt="{{ section.settings.image_2.alt | escape }}"
+          class="hero__img hero__img--right"
+          style="object-position: {{ section.settings.image_2_position | default: 'center center' }};"
+          loading="eager"
+          fetchpriority="high"
+        >
+      </div>
     {% elsif section.settings.image %}
       <img
         src="{{ section.settings.image | image_url: width: 1920 }}"
@@ -16,7 +35,10 @@
         fetchpriority="high"
       >
     {% else %}
-      <img src="{{ 'himachal_valley_hero.png' | asset_url }}" alt="Himachal Valley Pure Mountain Honey" class="hero__img" style="object-position: left center;" loading="eager" fetchpriority="high">
+      <div class="hero__split-media">
+        <img src="{{ 'himachal_valley_left.png' | asset_url }}" alt="Himachal Valley Left" class="hero__img hero__img--left" loading="eager" fetchpriority="high">
+        <img src="{{ 'himachal_valley_right.png' | asset_url }}" alt="Himachal Valley Right" class="hero__img hero__img--right" loading="eager" fetchpriority="high">
+      </div>
     {% endif %}
     <div class="hero__overlay"></div>
   </div>
@@ -78,12 +100,30 @@
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Background Image"
+      "label": "Background Image (Left / Full)"
     },
     {
       "type": "select",
       "id": "image_position",
       "label": "Image Focal Point",
+      "options": [
+        { "value": "left center", "label": "Left" },
+        { "value": "center center", "label": "Center" },
+        { "value": "right center", "label": "Right" },
+        { "value": "center top", "label": "Top" },
+        { "value": "center bottom", "label": "Bottom" }
+      ],
+      "default": "center center"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Background Image (Right)"
+    },
+    {
+      "type": "select",
+      "id": "image_2_position",
+      "label": "Right Image Focal Point",
       "options": [
         { "value": "left center", "label": "Left" },
         { "value": "center center", "label": "Center" },
