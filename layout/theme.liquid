@@ -170,9 +170,9 @@
           
           if (speed > 1.5) {
             // Rapidly alternate scaleX to simulate wings flapping when moving
+            // Using a very subtle scale so the body remains stable
             if (frameCount % 4 < 2) {
-              scaleX = 0.75;
-              scaleY = 1.05; // slight stretch for dynamic feel
+              scaleX = 0.88;
             }
           }
           
