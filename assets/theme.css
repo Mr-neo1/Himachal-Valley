@@ -914,12 +914,28 @@ h1, h2, h3, h4, h5, h6 {
 
 /* --- Why Choose Us --- */
 .why-choose__grid {
-  display: grid;
-  gap: 32px;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 16px;
+  padding-bottom: 24px;
+  margin-left: calc(var(--container-pad) * -1);
+  margin-right: calc(var(--container-pad) * -1);
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
+  scrollbar-width: none;
 }
+.why-choose__grid::-webkit-scrollbar { display: none; }
 @media (min-width: 768px) {
-  .why-choose__grid { grid-template-columns: repeat(3, 1fr); }
+  .why-choose__grid { 
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    overflow-x: visible;
+    margin: 0;
+    padding: 0;
+    gap: 32px;
+  }
+  .why-choose__item { min-width: 0; flex-shrink: 1; }
 }
 
 .why-choose__item {
@@ -929,6 +945,9 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--color-white);
   border: 1px solid var(--color-border);
   transition: all var(--transition);
+  min-width: 75vw;
+  scroll-snap-align: center;
+  flex-shrink: 0;
 }
 .why-choose__item:hover {
   border-color: var(--color-primary);
@@ -1037,25 +1056,31 @@ h1, h2, h3, h4, h5, h6 {
 .testimonials__slider {
   position: relative;
   overflow: hidden;
+  margin-left: calc(var(--container-pad) * -1);
+  margin-right: calc(var(--container-pad) * -1);
 }
 
 .testimonials__track {
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  gap: 24px;
+  gap: 16px;
   padding-bottom: 16px;
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
   /* hide scrollbar */
   scrollbar-width: none;
 }
 .testimonials__track::-webkit-scrollbar { display: none; }
 
 @media (min-width: 768px) {
+  .testimonials__slider { margin: 0; }
   .testimonials__track { 
     display: grid; 
     grid-template-columns: repeat(2, 1fr); 
     overflow-x: visible; 
-    padding-bottom: 0;
+    padding: 0;
+    gap: 24px;
   }
 }
 @media (min-width: 1024px) {
@@ -2191,7 +2216,6 @@ h1, h2, h3, h4, h5, h6 {
   .collection-sidebar { display: none; }
   .collection-sidebar.open { display: block; }
   .products-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-  .why-choose__grid { grid-template-columns: 1fr; }
 }
 
 /* --- Custom Bee Cursor --- */
