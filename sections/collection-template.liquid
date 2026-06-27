@@ -1,4 +1,5 @@
-<div class="collection-page">
+{% paginate collection.products by section.settings.products_per_page %}
+<section class="collection-page">
   <!-- Collection Hero -->
   <div class="collection-hero" {% if collection.image %}style="background-image: url('{{ collection.image | image_url: width: 1600 }}');"{% endif %}>
     <div class="collection-hero__overlay"></div>
@@ -135,7 +136,35 @@
       </div>
     </div>
   </div>
-</div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Filter toggle
+  const filterToggle = document.getElementById('filter-toggle');
+  const sidebar = document.getElementById('collection-sidebar');
+  if (filterToggle && sidebar) {
+    filterToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+    });
+  }
+
+  // View toggle (grid/list)
+  const viewBtns = document.querySelectorAll('.view-btn');
+  const grid = document.getElementById('products-grid');
+  viewBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      viewBtns.forEach(b => b.classList.remove('view-btn--active'));
+      btn.classList.add('view-btn--active');
+      if (btn.dataset.view === 'list') {
+        grid.classList.add('products-grid--list');
+      } else {
+        grid.classList.remove('products-grid--list');
+      }
+    });
+  });
+});
+</script>
 
 {% schema %}
 {
@@ -153,3 +182,4 @@
   ]
 }
 {% endschema %}
+{% endpaginate %}

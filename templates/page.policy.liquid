@@ -1,0 +1,145 @@
+<section class="policy-page section-padding">
+  <div class="container container--narrow">
+    <div class="section-header section-header--center">
+      <h1 class="section-title">{{ page.title }}</h1>
+    </div>
+    <div class="policy-content rte">
+      {% if page.content != blank %}
+        {{ page.content }}
+      {% else %}
+        <div class="policy-default">
+          {% case page.handle %}
+            {% when 'shipping' %}
+              <h2>Shipping Information</h2>
+              <p>At Himachal Valley, we ensure your honey reaches you fresh and intact.</p>
+              
+              <h3>Delivery Timeline</h3>
+              <ul>
+                <li><strong>Metro Cities:</strong> 2-4 business days</li>
+                <li><strong>Other Cities:</strong> 4-7 business days</li>
+                <li><strong>Remote Areas:</strong> 7-10 business days</li>
+              </ul>
+
+              <h3>Free Shipping</h3>
+              <p>We offer <strong>free shipping on all orders above ₹999</strong> across India. For orders below ₹999, a flat shipping fee of ₹79 applies.</p>
+
+              <h3>Packaging</h3>
+              <p>Every order is carefully packed with temperature-controlled, eco-friendly packaging to preserve the natural goodness of our honey.</p>
+
+              <h3>Order Tracking</h3>
+              <p>Once your order is dispatched, you'll receive a tracking number via email and SMS to monitor your delivery in real-time.</p>
+
+            {% when 'returns' %}
+              <h2>Returns & Refunds Policy</h2>
+              <p>Your satisfaction is our priority. If you're not happy with your purchase, we're here to help.</p>
+
+              <h3>Return Window</h3>
+              <p>You may initiate a return within <strong>7 days</strong> of receiving your order if the product is damaged, defective, or not as described.</p>
+
+              <h3>How to Return</h3>
+              <ol>
+                <li>Contact us at <strong>hello@himachalvalley.in</strong> with your order number</li>
+                <li>Share photos of the product and packaging</li>
+                <li>Our team will arrange a pickup or provide a return shipping label</li>
+              </ol>
+
+              <h3>Refund Process</h3>
+              <p>Refunds are processed within 5-7 business days after we receive and inspect the returned product. The amount will be credited to your original payment method.</p>
+
+              <h3>Non-Returnable Items</h3>
+              <p>Opened or partially consumed products cannot be returned unless they are defective or contaminated.</p>
+
+            {% when 'privacy' %}
+              <h2>Privacy Policy</h2>
+              <p>At Himachal Valley, we respect your privacy and are committed to protecting your personal information.</p>
+
+              <h3>Information We Collect</h3>
+              <p>When you visit our store, we collect information such as your name, email address, shipping address, and payment details necessary to process your order.</p>
+
+              <h3>How We Use Your Information</h3>
+              <ul>
+                <li>To process and fulfill your orders</li>
+                <li>To communicate with you about your orders</li>
+                <li>To send promotional offers (only if you've opted in)</li>
+                <li>To improve our products and services</li>
+              </ul>
+
+              <h3>Data Security</h3>
+              <p>We use industry-standard SSL encryption to protect your personal and payment information. Your data is never sold or shared with third parties for marketing purposes.</p>
+
+              <h3>Contact Us</h3>
+              <p>For any privacy-related queries, reach out to us at <strong>hello@himachalvalley.in</strong>.</p>
+
+            {% when 'terms' %}
+              <h2>Terms of Service</h2>
+              <p>By accessing and using the Himachal Valley website, you agree to the following terms and conditions.</p>
+
+              <h3>Products</h3>
+              <p>All products sold on our website are natural honey products. Colours, textures, and crystallization may vary between batches — this is a hallmark of pure, raw honey.</p>
+
+              <h3>Pricing</h3>
+              <p>All prices are listed in Indian Rupees (₹) and include applicable taxes. We reserve the right to update prices without prior notice.</p>
+
+              <h3>Orders</h3>
+              <p>We reserve the right to refuse or cancel any order for reasons including product availability, errors in pricing or product information, or suspected fraudulent activity.</p>
+
+              <h3>Intellectual Property</h3>
+              <p>All content on this website, including text, images, logos, and design, is the property of Himachal Valley and is protected by copyright laws.</p>
+
+              <h3>Limitation of Liability</h3>
+              <p>Himachal Valley shall not be liable for any indirect, incidental, or consequential damages arising from the use of our products or website.</p>
+            
+            {% else %}
+              <p>This page content will be available soon. Please check back later.</p>
+          {% endcase %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+.policy-page { background: var(--color-background); }
+.policy-content {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--color-white);
+  padding: 40px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+.policy-content h2 {
+  font-size: 1.6rem;
+  color: var(--color-dark);
+  margin-bottom: 16px;
+}
+.policy-content h3 {
+  font-size: 1.15rem;
+  color: var(--color-dark);
+  margin: 28px 0 12px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border);
+}
+.policy-content h3:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+.policy-content p {
+  font-size: 1rem;
+  color: var(--color-text-light);
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+.policy-content ul, .policy-content ol {
+  margin: 12px 0 20px 20px;
+  color: var(--color-text-light);
+  line-height: 1.8;
+}
+.policy-content li {
+  margin-bottom: 8px;
+}
+.policy-content strong {
+  color: var(--color-dark);
+}
+</style>

@@ -2069,3 +2069,20 @@ h1, h2, h3, h4, h5, h6 {
   .product-card__actions { display: none; }
   .process__steps { grid-template-columns: 1fr; }
 }
+
+/* --- List View --- */
+.products-grid--list {
+  grid-template-columns: 1fr !important;
+}
+.products-grid--list .product-card {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+.products-grid--list .product-card__media {
+  aspect-ratio: 1;
+}
+@media (max-width: 640px) {
+  .products-grid--list .product-card {
+    grid-template-columns: 120px 1fr;
+  }
+}
