@@ -919,10 +919,10 @@ h1, h2, h3, h4, h5, h6 {
   scroll-snap-type: x mandatory;
   gap: 16px;
   padding-bottom: 24px;
-  margin-left: calc(var(--container-pad) * -1);
-  margin-right: calc(var(--container-pad) * -1);
-  padding-left: var(--container-pad);
-  padding-right: var(--container-pad);
+  margin-left: -24px;
+  margin-right: -24px;
+  padding-left: 24px;
+  padding-right: 24px;
   scrollbar-width: none;
 }
 .why-choose__grid::-webkit-scrollbar { display: none; }
@@ -1056,8 +1056,8 @@ h1, h2, h3, h4, h5, h6 {
 .testimonials__slider {
   position: relative;
   overflow: hidden;
-  margin-left: calc(var(--container-pad) * -1);
-  margin-right: calc(var(--container-pad) * -1);
+  margin-left: -24px;
+  margin-right: -24px;
 }
 
 .testimonials__track {
@@ -1066,8 +1066,8 @@ h1, h2, h3, h4, h5, h6 {
   scroll-snap-type: x mandatory;
   gap: 16px;
   padding-bottom: 16px;
-  padding-left: var(--container-pad);
-  padding-right: var(--container-pad);
+  padding-left: 24px;
+  padding-right: 24px;
   /* hide scrollbar */
   scrollbar-width: none;
 }
