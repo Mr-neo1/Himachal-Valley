@@ -82,7 +82,7 @@
         </div>
         <p class="cart-drawer__shipping-note">Taxes & shipping calculated at checkout</p>
         <a href="/checkout" class="btn btn--primary btn--full">Proceed to Checkout</a>
-        <a href="/cart" class="cart-drawer__view-cart">View Full Cart</a>
+        <a href="{{ routes.cart_url }}" class="cart-drawer__view-cart">View Full Cart</a>
       </div>
     </div>
   </div>
@@ -102,8 +102,8 @@
       </div>
       <nav class="mobile-menu__nav">
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/collections/all">Shop All</a></li>
+          <li><a href="{{ routes.root_url }}">Home</a></li>
+          <li><a href="{{ routes.all_products_collection_url }}">Shop All</a></li>
           <li><a href="/collections/raw-honey">Raw Honey</a></li>
           <li><a href="/collections/flavored-honey">Flavored Honey</a></li>
           <li><a href="/pages/our-story">Our Story</a></li>

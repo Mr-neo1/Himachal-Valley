@@ -1,0 +1,481 @@
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  :\Himachal Valley\layout\theme.liquid                                       │
+│                                                                              │
+│                                                                              │
+│  [error]: ParserBlockingScript                                               │
+│  The script_tag filter is parser-blocking. Use a <script> tag with async or  │
+│   defer for better performance                                               │
+│                                                                              │
+│  129  {{ 'theme.js' | asset_url | script_tag }}                              │
+│                                                                              │
+│                                                                              │
+│  [warning]: RemoteAsset                                                      │
+│  Asset should be served by the Shopify CDN for better performance.           │
+│                                                                              │
+│  24  <link rel="preconnect" href="https://fonts.googleapis.com">             │
+│                                                                              │
+│                                                                              │
+│  [warning]: RemoteAsset                                                      │
+│  Asset should be served by the Shopify CDN for better performance.           │
+│                                                                              │
+│  25  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>    │
+│                                                                              │
+│                                                                              │
+│  [warning]: RemoteAsset                                                      │
+│  Asset should be served by the Shopify CDN for better performance.           │
+│                                                                              │
+│  26  <link                                                                   │
+│  href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@  │
+│  0,400;0,500;0,600;0,700;1,400;1,500&family=Lato:wght@300;400;700&family=Co  │
+│  rmorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"      │
+│  rel="stylesheet">                                                           │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.cart_url }} instead of hardcoding /cart         │
+│                                                                              │
+│  85  <a href="/cart" class="cart-drawer__view-cart">View Full Cart</a>       │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.root_url }} instead of hardcoding /             │
+│                                                                              │
+│  105  <li><a href="/">Home</a></li>                                          │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.all_products_collection_url }} instead of       │
+│  hardcoding /collections/all                                                 │
+│                                                                              │
+│  106  <li><a href="/collections/all">Shop All</a></li>                       │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.collections_url }} instead of hardcoding        │
+│  /collections                                                                │
+│                                                                              │
+│  107  <li><a href="/collections/raw-honey">Raw Honey</a></li>                │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.collections_url }} instead of hardcoding        │
+│  /collections                                                                │
+│                                                                              │
+│  108  <li><a href="/collections/flavored-honey">Flavored Honey</a></li>      │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  :\Himachal Valley\sections\collection-template.liquid                       │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.root_url }} instead of hardcoding /             │
+│                                                                              │
+│  8  <a href="/">Home</a>                                                     │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.all_products_collection_url }} instead of       │
+│  hardcoding /collections/all                                                 │
+│                                                                              │
+│  101  <a href="/collections/all" class="btn btn--primary">Shop All           │
+│  Honey</a>                                                                   │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'paginate' used.                                             │
+│                                                                              │
+│  114  <a href="{{ paginate.previous.url }}" class="pagination__btn">         │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'paginate' used.                                             │
+│                                                                              │
+│  113  {% if paginate.previous %}                                             │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'paginate' used.                                             │
+│                                                                              │
+│  119  {% for part in paginate.parts %}                                       │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'paginate' used.                                             │
+│                                                                              │
+│  127  <a href="{{ paginate.next.url }}" class="pagination__btn">             │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'paginate' used.                                             │
+│                                                                              │
+│  126  {% if paginate.next %}                                                 │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'paginate' used.                                             │
+│                                                                              │
+│  111  {% if paginate.pages > 1 %}                                            │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  :\Himachal Valley\sections\footer.liquid                                    │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.all_products_collection_url }} instead of       │
+│  hardcoding /collections/all                                                 │
+│                                                                              │
+│  41  <li><a href="/collections/all">All Products</a></li>                    │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.collections_url }} instead of hardcoding        │
+│  /collections                                                                │
+│                                                                              │
+│  42  <li><a href="/collections/raw-honey">Raw Honey</a></li>                 │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.collections_url }} instead of hardcoding        │
+│  /collections                                                                │
+│                                                                              │
+│  43  <li><a href="/collections/multifloral-honey">Multifloral                │
+│  Honey</a></li>                                                              │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.collections_url }} instead of hardcoding        │
+│  /collections                                                                │
+│                                                                              │
+│  44  <li><a href="/collections/flavored-honey">Infused Honey</a></li>        │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.collections_url }} instead of hardcoding        │
+│  /collections                                                                │
+│                                                                              │
+│  45  <li><a href="/collections/gift-sets">Gift Sets</a></li>                 │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.collections_url }} instead of hardcoding        │
+│  /collections                                                                │
+│                                                                              │
+│  46  <li><a href="/collections/bulk-orders">Bulk Orders</a></li>             │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.account_url }} instead of hardcoding /account   │
+│                                                                              │
+│  72  <li><a href="/account">My Account</a></li>                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  :\Himachal Valley\sections\header.liquid                                    │
+│                                                                              │
+│                                                                              │
+│  [error]: ImgWidthAndHeight                                                  │
+│  Missing width and height attributes on img tag                              │
+│                                                                              │
+│  16  <img src="{{ section.settings.logo | image_url: width: 200 }}" alt="{{  │
+│   shop.name }}" class="site-header__logo-img">                               │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.root_url }} instead of hardcoding /             │
+│                                                                              │
+│  14  <a href="/" class="site-header__logo-link">                             │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.all_products_collection_url }} instead of       │
+│  hardcoding /collections/all                                                 │
+│                                                                              │
+│  29  <li><a href="/collections/all" class="nav-link">Shop All</a></li>       │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.collections_url }} instead of hardcoding        │
+│  /collections                                                                │
+│                                                                              │
+│  31  <a href="/collections" class="nav-link">Collections <svg width="12"     │
+│  height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"           │
+│  stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>    │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.collections_url }} instead of hardcoding        │
+│  /collections                                                                │
+│                                                                              │
+│  33  <a href="/collections/raw-honey">Raw Honey</a>                          │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.collections_url }} instead of hardcoding        │
+│  /collections                                                                │
+│                                                                              │
+│  34  <a href="/collections/multifloral-honey">Multifloral Honey</a>          │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.collections_url }} instead of hardcoding        │
+│  /collections                                                                │
+│                                                                              │
+│  35  <a href="/collections/flavored-honey">Infused Honey</a>                 │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.collections_url }} instead of hardcoding        │
+│  /collections                                                                │
+│                                                                              │
+│  36  <a href="/collections/gift-sets">Gift Sets</a>                          │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.account_url }} instead of hardcoding /account   │
+│                                                                              │
+│  50  <a href="/account" class="site-header__icon" aria-label="Account">      │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.search_url }} instead of hardcoding /search     │
+│                                                                              │
+│  64  <form action="/search" method="get" role="search"                       │
+│  class="search-bar__form">                                                   │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  :\Himachal Valley\sections\hero.liquid                                      │
+│                                                                              │
+│                                                                              │
+│  [error]: ImgWidthAndHeight                                                  │
+│  Missing width and height attributes on img tag                              │
+│                                                                              │
+│  8        <img                                                               │
+│  9          src="{{ section.settings.image | image_url: width: 1920 }}"      │
+│  10          srcset="{{ section.settings.image | image_url: width: 800 }}    │
+│  800w, {{ section.settings.image | image_url: width: 1200 }} 1200w, {{       │
+│  section.settings.image | image_url: width: 1920 }} 1920w"                   │
+│  11          sizes="100vw"                                                   │
+│  12          alt="{{ section.settings.image.alt | escape }}"                 │
+│  13          class="hero__img"                                               │
+│  14          loading="eager"                                                 │
+│  15          fetchpriority="high"                                            │
+│  16        >                                                                 │
+│                                                                              │
+│                                                                              │
+│  [error]: ImgWidthAndHeight                                                  │
+│  Missing width and height attributes on img tag                              │
+│                                                                              │
+│  18  <img src="{{ 'himachal_hero.png' | asset_url }}" alt="Himachal Valley   │
+│  Pure Mountain Honey" class="hero__img" loading="eager"                      │
+│  fetchpriority="high">                                                       │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  :\Himachal Valley\sections\honey-process.liquid                             │
+│                                                                              │
+│                                                                              │
+│  [error]: ImgWidthAndHeight                                                  │
+│  Missing width and height attributes on img tag                              │
+│                                                                              │
+│  19  <img src="{{ block.settings.image | image_url: width: 120 }}" alt="{{   │
+│  block.settings.title }}" loading="lazy">                                    │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  :\Himachal Valley\sections\our-story.liquid                                 │
+│                                                                              │
+│                                                                              │
+│  [error]: ImgWidthAndHeight                                                  │
+│  Missing width and height attributes on img tag                              │
+│                                                                              │
+│  7              <img                                                         │
+│  8                src="{{ section.settings.image | image_url: width: 800     │
+│  }}"                                                                         │
+│  9                alt="{{ section.settings.image.alt | escape }}"            │
+│  10                class="our-story__img"                                    │
+│  11                loading="lazy"                                            │
+│  12              >                                                           │
+│                                                                              │
+│                                                                              │
+│  [error]: ImgWidthAndHeight                                                  │
+│  Missing width and height attributes on img tag                              │
+│                                                                              │
+│  16              <img                                                        │
+│  17                src="{{ 'our_story_1.png' | asset_url }}"                 │
+│  18                alt="Himachal Valley Beekeeper"                           │
+│  19                class="our-story__img"                                    │
+│  20                loading="lazy"                                            │
+│  21              >                                                           │
+│                                                                              │
+│                                                                              │
+│  [error]: ImgWidthAndHeight                                                  │
+│  Missing width and height attributes on img tag                              │
+│                                                                              │
+│  27              <img                                                        │
+│  28                src="{{ section.settings.image_2 | image_url: width: 400  │
+│   }}"                                                                        │
+│  29                alt="{{ section.settings.image_2.alt | escape }}"         │
+│  30                class="our-story__img"                                    │
+│  31                loading="lazy"                                            │
+│  32              >                                                           │
+│                                                                              │
+│                                                                              │
+│  [error]: ImgWidthAndHeight                                                  │
+│  Missing width and height attributes on img tag                              │
+│                                                                              │
+│  36              <img                                                        │
+│  37                src="{{ 'our_story_2.png' | asset_url }}"                 │
+│  38                alt="Himachal Valley Pure Honey"                          │
+│  39                class="our-story__img"                                    │
+│  40                loading="lazy"                                            │
+│  41              >                                                           │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  :\Himachal Valley\sections\product-template.liquid                          │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.root_url }} instead of hardcoding /             │
+│                                                                              │
+│  89  <a href="/">Home</a>                                                    │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.all_products_collection_url }} instead of       │
+│  hardcoding /collections/all                                                 │
+│                                                                              │
+│  91  <a href="/collections/all">Shop</a>                                     │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  :\Himachal Valley\sections\testimonials.liquid                              │
+│                                                                              │
+│                                                                              │
+│  [error]: ImgWidthAndHeight                                                  │
+│  Missing width and height attributes on img tag                              │
+│                                                                              │
+│  35  <img src="{{ block.settings.avatar | image_url: width: 60 }}" alt="{{   │
+│  block.settings.name }}" class="testimonial-card__avatar" loading="lazy">    │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  :\Himachal Valley\templates\404.liquid                                      │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.root_url }} instead of hardcoding /             │
+│                                                                              │
+│  16  <a href="/" class="btn btn--primary btn--lg">Back to Home</a>           │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.all_products_collection_url }} instead of       │
+│  hardcoding /collections/all                                                 │
+│                                                                              │
+│  17  <a href="/collections/all" class="btn btn--outline btn--lg">Shop        │
+│  Honey</a>                                                                   │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  :\Himachal Valley\templates\cart.liquid                                     │
+│                                                                              │
+│                                                                              │
+│  [error]: ImgWidthAndHeight                                                  │
+│  Missing width and height attributes on img tag                              │
+│                                                                              │
+│  21  <img src="{{ item.image | image_url: width: 120 }}" alt="{{ item.title  │
+│   }}" class="cart-row__img" loading="lazy">                                  │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.all_products_collection_url }} instead of       │
+│  hardcoding /collections/all                                                 │
+│                                                                              │
+│  14  <a href="/collections/all" class="btn btn--primary btn--lg">Shop Pure   │
+│  Honey</a>                                                                   │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.cart_change_url }} instead of hardcoding        │
+│  /cart/change                                                                │
+│                                                                              │
+│  44  <a href="/cart/change?id={{ item.key }}&quantity=0"                     │
+│  class="cart-row__remove">                                                   │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.all_products_collection_url }} instead of       │
+│  hardcoding /collections/all                                                 │
+│                                                                              │
+│  85  <a href="/collections/all" class="btn btn--outline btn--full"           │
+│  style="margin-top:12px;">Continue Shopping</a>                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  :\Himachal Valley\templates\page.liquid                                     │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.root_url }} instead of hardcoding /             │
+│                                                                              │
+│  4  <a href="/">Home</a>                                                     │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  :\Himachal Valley\templates\search.liquid                                   │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.search_url }} instead of hardcoding /search     │
+│                                                                              │
+│  15  <form action="/search" method="get" class="search-page__form">          │
+│                                                                              │
+│                                                                              │
+│  [warning]: HardcodedRoutes                                                  │
+│  Use routes object {{ routes.all_products_collection_url }} instead of       │
+│  hardcoding /collections/all                                                 │
+│                                                                              │
+│  30  <a href="/collections/all" class="btn btn--primary">Browse All          │
+│  Products</a>                                                                │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  Theme Check Summary.                                                        │
+│                                                                              │
+│  29 files inspected with 53 total offenses found across 13 files.            │
+│  11 errors.                                                                  │
+│  42 warnings.                                                                │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+

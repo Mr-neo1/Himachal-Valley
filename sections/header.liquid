@@ -11,7 +11,7 @@
 
       <!-- Logo -->
       <div class="site-header__logo">
-        <a href="/" class="site-header__logo-link">
+        <a href="{{ routes.root_url }}" class="site-header__logo-link">
           {% if section.settings.logo %}
             <img src="{{ section.settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}" class="site-header__logo-img">
           {% else %}
@@ -26,7 +26,7 @@
       <!-- Nav (Desktop) -->
       <nav class="site-header__nav" aria-label="Primary">
         <ul class="site-header__nav-list">
-          <li><a href="/collections/all" class="nav-link">Shop All</a></li>
+          <li><a href="{{ routes.all_products_collection_url }}" class="nav-link">Shop All</a></li>
           <li class="has-dropdown">
             <a href="/collections" class="nav-link">Collections <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
             <div class="nav-dropdown">
@@ -61,7 +61,7 @@
   <!-- Search Bar -->
   <div class="search-bar" id="search-bar" aria-hidden="true">
     <div class="container">
-      <form action="/search" method="get" role="search" class="search-bar__form">
+      <form action="{{ routes.search_url }}" method="get" role="search" class="search-bar__form">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
         <input type="search" name="q" placeholder="Search for honey, gift sets..." class="search-bar__input" autocomplete="off">
         <button type="button" id="search-close" aria-label="Close search">
