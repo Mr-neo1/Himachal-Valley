@@ -2165,6 +2165,13 @@ h1, h2, h3, h4, h5, h6 {
   .testimonials__nav { display: none !important; }
   .newsletter__form { flex-direction: column; }
   .newsletter__btn { width: 100%; }
+  .product-page__gallery { flex-direction: column-reverse; }
+  .product-gallery__thumbnails { flex-direction: row; width: 100%; overflow-x: auto; }
+  .gallery-thumb { width: 60px; height: 60px; flex-shrink: 0; }
+  .collection-sidebar { display: none; }
+  .collection-sidebar.open { display: block; }
+  .products-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .why-choose__grid { grid-template-columns: 1fr; }
 }
 
 /* --- Custom Bee Cursor --- */
@@ -2193,14 +2200,6 @@ h1, h2, h3, h4, h5, h6 {
   height: 56px;
   top: -28px;
   left: -28px;
-}
-  .product-page__gallery { flex-direction: column-reverse; }
-  .product-gallery__thumbnails { flex-direction: row; width: 100%; overflow-x: auto; }
-  .gallery-thumb { width: 60px; height: 60px; flex-shrink: 0; }
-  .collection-sidebar { display: none; }
-  .collection-sidebar.open { display: block; }
-  .products-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-  .why-choose__grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {
