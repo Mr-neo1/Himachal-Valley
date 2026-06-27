@@ -18,7 +18,10 @@
         >
       </div>
     {% else %}
-      <img src="{{ 'himachal_hero.png' | asset_url }}" alt="Himachal Valley Pure Mountain Honey" class="hero__img" loading="eager" fetchpriority="high">
+      <div class="hero__img-wrapper">
+        <img src="{{ 'himachal_hero.png' | asset_url }}" class="hero__img-blur" alt="" aria-hidden="true" loading="eager" fetchpriority="high">
+        <img src="{{ 'himachal_hero.png' | asset_url }}" alt="Himachal Valley Pure Mountain Honey" class="hero__img-contain" loading="eager" fetchpriority="high">
+      </div>
     {% endif %}
     <div class="hero__overlay"></div>
   </div>

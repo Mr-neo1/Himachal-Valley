@@ -29,6 +29,7 @@
                   <img src="{{ 'honey_process_4.png' | asset_url }}" alt="Packed & Delivered" loading="lazy" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:2px solid var(--color-accent);">
               {% endcase %}
             {% endif %}
+          </div>
           <h3 class="process__step-title">{{ block.settings.title }}</h3>
           <p class="process__step-desc">{{ block.settings.description }}</p>
           {% unless forloop.last %}
