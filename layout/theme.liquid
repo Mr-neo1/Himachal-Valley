@@ -138,6 +138,7 @@
       let beeX = mouseX;
       let beeY = mouseY;
       let frameCount = 0;
+      let currentAngle = 0;
       
       // Enable permanent cursor on desktop
       if (window.matchMedia("(min-width: 768px)").matches) {
@@ -176,14 +177,9 @@
           const dx = mouseX - beeX;
           const dy = mouseY - beeY;
           
-          // Easing factor
-          beeX += dx * 0.2;
-          beeY += dy * 0.2;
-          
-          // Calculate rotation
-          let angle = Math.atan2(dy, dx) * 180 / Math.PI;
-          // Offset because the generated top-down bee faces "up"
-          angle += 90;
+          // Easing factor for position
+          beeX += dx * 0.15; // slightly slower for wider curves
+          beeY += dy * 0.15;
           
           // Calculate movement speed for flapping
           const speed = Math.sqrt(dx * dx + dy * dy);
@@ -198,11 +194,20 @@
             }
           }
           
-          // Only rotate if moving significantly
-          if (Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5) {
-            bee.style.transform = `translate3d(${beeX}px, ${beeY}px, 0) rotate(${angle}deg) scale(${scaleX}, ${scaleY})`;
+          // Only update rotation if moving significantly
+          if (speed > 1.0) {
+            let targetAngle = Math.atan2(dy, dx) * 180 / Math.PI + 90;
+            // Smooth rotation by finding the shortest path to target angle
+            let diff = targetAngle - currentAngle;
+            // Normalize diff to -180 to 180
+            while (diff < -180) diff += 360;
+            while (diff > 180) diff -= 360;
+            currentAngle += diff * 0.25; // 25% easing on rotation
+            
+            bee.style.transform = `translate3d(${beeX}px, ${beeY}px, 0) rotate(${currentAngle}deg) scale(${scaleX}, ${scaleY})`;
           } else {
-            bee.style.transform = `translate3d(${beeX}px, ${beeY}px, 0) rotate(0deg) scale(1, 1)`;
+            // Keep the last rotation but reset scale when stopped
+            bee.style.transform = `translate3d(${beeX}px, ${beeY}px, 0) rotate(${currentAngle}deg) scale(1, 1)`;
           }
           
           requestAnimationFrame(animate);
