@@ -1,7 +1,7 @@
 from PIL import Image
 import sys
 
-img_path = r'C:\Users\rkrai\.gemini\antigravity\brain\9e9ac4bc-46e7-4feb-b732-591a5c0ba456\3d_honey_bee_1782556252547.png'
+img_path = r'C:\Users\rkrai\.gemini\antigravity\brain\9e9ac4bc-46e7-4feb-b732-591a5c0ba456\realistic_bee_v2_1782556574531.png'
 out_path = r'e:\Himachal Valley\assets\bee_cursor_3d.png'
 
 try:
@@ -9,10 +9,10 @@ try:
     datas = img.getdata()
     
     newData = []
-    # threshold for black
+    # threshold for white
     for item in datas:
-        # if r, g, b are all less than a threshold, make it transparent
-        if item[0] < 30 and item[1] < 30 and item[2] < 30:
+        # if r, g, b are all high, make it transparent
+        if item[0] > 235 and item[1] > 235 and item[2] > 235:
             newData.append((255, 255, 255, 0))
         else:
             newData.append(item)

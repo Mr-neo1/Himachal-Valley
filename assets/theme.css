@@ -2170,15 +2170,15 @@ h1, h2, h3, h4, h5, h6 {
 /* --- Custom Bee Cursor --- */
 .bee-cursor {
   position: fixed;
-  top: -14px;
-  left: -14px;
-  width: 28px;
-  height: 28px;
+  top: -22px;
+  left: -22px;
+  width: 44px;
+  height: 44px;
   pointer-events: none;
   z-index: 999999;
   display: none;
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
-  transition: width 0.2s ease, height 0.2s ease;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.4));
+  transition: width 0.2s ease, height 0.2s ease, top 0.2s ease, left 0.2s ease;
   will-change: transform;
 }
 .custom-cursor-enabled .bee-cursor {
@@ -2189,10 +2189,10 @@ h1, h2, h3, h4, h5, h6 {
   cursor: none !important;
 }
 .bee-cursor--hover {
-  width: 36px;
-  height: 36px;
-  top: -18px;
-  left: -18px;
+  width: 56px;
+  height: 56px;
+  top: -28px;
+  left: -28px;
 }
   .product-page__gallery { flex-direction: column-reverse; }
   .product-gallery__thumbnails { flex-direction: row; width: 100%; overflow-x: auto; }
