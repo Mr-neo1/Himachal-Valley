@@ -926,8 +926,11 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
     gap: 16px;
-    padding-bottom: 16px;
+    padding: 0 20px 16px 20px;
+    margin-left: -20px;
+    margin-right: -20px;
     scrollbar-width: none;
   }
   .why-choose__grid::-webkit-scrollbar { display: none; }
@@ -943,8 +946,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 @media (max-width: 767px) {
   .why-choose__item {
-    min-width: 80vw;
-    scroll-snap-align: center;
+    min-width: 280px;
+    width: 80vw;
+    max-width: 85vw;
+    scroll-snap-align: start;
     flex-shrink: 0;
   }
 }
@@ -1065,12 +1070,17 @@ h1, h2, h3, h4, h5, h6 {
   .testimonials__track { grid-template-columns: repeat(4, 1fr); }
 }
 @media (max-width: 767px) {
+  .testimonials__slider {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
   .testimonials__track {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
     gap: 16px;
-    padding-bottom: 16px;
+    padding: 0 20px 16px 20px;
     scrollbar-width: none;
   }
   .testimonials__track::-webkit-scrollbar { display: none; }
@@ -1088,8 +1098,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 @media (max-width: 767px) {
   .testimonial-card {
-    min-width: 85vw;
-    scroll-snap-align: center;
+    min-width: 280px;
+    width: 85vw;
+    max-width: 90vw;
+    scroll-snap-align: start;
     flex-shrink: 0;
   }
 }
